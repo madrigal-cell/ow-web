@@ -1,0 +1,55 @@
+---
+/**
+ * Vídeo de Vimeo embebido en la propia web (nunca se envía al usuario a Vimeo).
+ * Fachada: no carga nada de Vimeo hasta que el usuario pulsa play.
+ * Sin vimeoId muestra un hueco del color indicado con el aviso de pendiente.
+ */
+import { resolveLocale, dict } from '../i18n';
+interface Props { vimeoId?: string; title: string; tone?: 'accent' | 'ink' | 'paper'; label?: string }
+const { vimeoId, title, tone = 'ink', label } = Astro.props;
+const d = dict(resolveLocale(Astro.currentLocale));
+---
+<div class:list={['vimeo', `vimeo--${tone}`]} data-vimeo-id={vimeoId}>
+  {vimeoId ? (
+    <button class="vimeo__play" type="button" aria-label={`${d.showreel.play}: ${title}`}>
+      <span class="vimeo__btn"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5v15l12-7.5-12-7.5z" fill="currentColor"/></svg></span>
+      {label && <span class="label vimeo__label">{label}</span>}
+    </button>
+  ) : (
+    <p class="label vimeo__pending">{d.casePage.videoPending}</p>
+  )}
+  <div class="vimeo__player" hidden></div>
+</div>
+
+<style>
+  .vimeo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; display: flex; align-items: flex-end; padding: 1rem; }
+  .vimeo--accent { background: var(--color-accent); color: var(--color-ink); }
+  .vimeo--ink { background: var(--color-ink); color: var(--color-bg); background-image: repeating-linear-gradient(135deg, var(--color-ink) 0 40px, var(--color-stripe-dark) 40px 80px); }
+  .vimeo--paper { background: var(--color-placeholder); color: var(--color-ink); }
+  .vimeo__play { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: space-between; padding: 1.5rem; color: inherit; text-align: left; }
+  .vimeo__btn { width: 96px; height: 96px; background: var(--color-accent); color: var(--color-ink); display: grid; place-items: center; transition: transform var(--dur) var(--ease), background var(--dur) var(--ease); }
+  .vimeo--accent .vimeo__btn { background: var(--color-ink); color: var(--color-bg); }
+  .vimeo__play:hover .vimeo__btn { transform: scale(1.04); }
+  .vimeo__pending { position: relative; opacity: 0.8; }
+  .vimeo__player { position: absolute; inset: 0; background: #000; }
+  .vimeo__player :global(iframe) { width: 100%; height: 100%; border: 0; }
+  @media (min-width: 900px) { .vimeo { padding: 1.5rem; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.vimeo[data-vimeo-id]').forEach((box) => {
+    const id = box.dataset.vimeoId;
+    const btn = box.querySelector<HTMLButtonElement>('.vimeo__play');
+    const player = box.querySelector<HTMLElement>('.vimeo__player');
+    if (!id || !btn || !player) return;
+    btn.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.title = btn.getAttribute('aria-label') ?? 'Vimeo';
+      player.replaceChildren(iframe);
+      player.hidden = false;
+      btn.hidden = true;
+    }, { once: true });
+  });
+</script>

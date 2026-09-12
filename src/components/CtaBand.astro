@@ -1,0 +1,28 @@
+---
+/** Banda negra de cierre con el CTA único de la web. */
+import { resolveLocale, dict, path } from '../i18n';
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+---
+<section class="cta-band on-dark">
+  <div class="wrap grid-12 cta-band__inner">
+    <h2 class="display cta-band__title">{d.cta.title}</h2>
+    <div class="cta-band__body">
+      <p class="lead">{d.cta.text}</p>
+      <a class="btn btn--accent label" href={path('contact', locale)}>{d.common.cta}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band { margin-top: var(--section-y-lg); padding-block: 2.75rem 3rem; }
+  .cta-band__inner { row-gap: 1.5rem; align-items: end; }
+  .cta-band__title { grid-column: 1 / -1; font-size: var(--fs-block); line-height: 0.9; }
+  .cta-band__body { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+  .cta-band__body .lead { color: var(--color-text-dark); font-weight: 400; }
+  @media (min-width: 900px) {
+    .cta-band { padding-block: 4.5rem 5rem; }
+    .cta-band__title { grid-column: 1 / span 7; }
+    .cta-band__body { grid-column: 8 / span 5; }
+  }
+</style>

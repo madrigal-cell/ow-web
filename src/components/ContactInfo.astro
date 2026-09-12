@@ -1,0 +1,25 @@
+---
+/** Datos de contacto (teléfonos, WhatsApp, email, dirección, redes). */
+import { resolveLocale, dict } from '../i18n';
+import { site } from '../data/site';
+const d = dict(resolveLocale(Astro.currentLocale));
+const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.address.street}, ${site.address.postalCode} ${site.address.city}`)}`;
+---
+<dl class="info">
+  <div><dt class="label">{d.contactPage.phone}</dt><dd><a href={site.phone.href}>{site.phone.display}</a></dd></div>
+  <div><dt class="label">{d.contactPage.mobile}</dt><dd><a href={site.mobile.href}>{site.mobile.display}</a></dd></div>
+  <div><dt class="label">{d.contactPage.whatsapp}</dt><dd><a href={site.whatsapp} rel="noopener" target="_blank">{site.mobile.display}</a></dd></div>
+  <div><dt class="label">{d.contactPage.email}</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+  <div><dt class="label">{d.contactPage.address}</dt><dd>{site.address.street}, {site.address.postalCode} {site.address.city}<br /><a class="info__map label" href={maps} rel="noopener" target="_blank">{d.contactPage.map}</a></dd></div>
+  <div><dt class="label">{d.contactPage.social}</dt><dd><a href={site.social.linkedin} rel="noopener" target="_blank">LinkedIn</a> · <a href={site.social.instagram} rel="noopener" target="_blank">Instagram</a> · <a href={site.social.vimeo} rel="noopener" target="_blank">Vimeo</a></dd></div>
+</dl>
+
+<style>
+  .info { display: flex; flex-direction: column; margin: 0; }
+  .info > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-block: 1rem; border-top: var(--line-thin) solid var(--color-ink); }
+  .info > div:last-child { border-bottom: var(--line-thin) solid var(--color-ink); }
+  .info dt { color: var(--color-label); padding-top: 0.25rem; }
+  .info dd { margin: 0; font-size: var(--fs-lead); line-height: 1.4; }
+  .info dd a:hover { color: var(--color-accent); }
+  .info__map { display: inline-block; margin-top: 0.375rem; font-size: var(--fs-label); border-bottom: var(--line-thin) solid currentColor; }
+</style>

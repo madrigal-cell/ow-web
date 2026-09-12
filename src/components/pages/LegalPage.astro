@@ -1,0 +1,27 @@
+---
+/** Página legal (aviso legal, privacidad, cookies). Sin indexar hasta tener el texto definitivo. */
+import Page from '../../layouts/Page.astro';
+import PageHead from '../PageHead.astro';
+import { resolveLocale, dict } from '../../i18n';
+import { site } from '../../data/site';
+
+interface Props { kind: 'legal' | 'privacy' | 'cookies' }
+const { kind } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+const titles = { legal: d.legal.legalTitle, privacy: d.legal.privacyTitle, cookies: d.legal.cookiesTitle } as const;
+const title = `${titles[kind]} · ${d.meta.siteName}`;
+---
+<Page title={title} description={titles[kind]} noindex>
+  <PageHead title={titles[kind]} size="block" />
+  <section class="wrap legal">
+    <div class="prose">
+      <p class="pending-note">{d.legal.pending}</p>
+      <p>{site.legalName} · CIF {site.cif} · {site.address.street}, {site.address.postalCode} {site.address.city} · <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .legal { padding-block: 1rem var(--section-y-lg); }
+</style>

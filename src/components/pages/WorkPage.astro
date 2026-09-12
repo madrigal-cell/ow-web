@@ -1,0 +1,63 @@
+---
+/** Listado de trabajos con filtro por tipo (sin JS se ven todos). */
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import PageHead from '../PageHead.astro';
+import CaseCard from '../CaseCard.astro';
+import CtaBand from '../CtaBand.astro';
+import { resolveLocale, dict, casePath } from '../../i18n';
+
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+const types = d.types as Record<string, string>;
+const cases = (await getCollection('casos', ({ data }) => data.lang === locale)).sort((a, b) => a.data.order - b.data.order);
+const present = (['evento', 'marca', 'institucional', 'foto'] as const).filter((t) => cases.some((c) => c.data.type === t));
+const meta = (c: (typeof cases)[number]) => [types[c.data.type], c.data.duration].filter(Boolean).join(' · ');
+const title = `${d.workPage.kicker} · ${d.meta.siteName}`;
+---
+<Page title={title} description={d.workPage.lead}>
+  <PageHead kicker={d.workPage.kicker} title={d.workPage.title} lead={d.workPage.lead} />
+
+  <div class="filters wrap" role="group" aria-label={d.workPage.kicker}>
+    <button class="filter label is-active" type="button" data-filter="all" aria-pressed="true">{d.workPage.all}</button>
+    {present.map((t) => <button class="filter label" type="button" data-filter={t} aria-pressed="false">{types[t]}</button>)}
+  </div>
+
+  <div class="work-grid wrap grid-12" id="work-grid">
+    {cases.map((c) => (
+      <div class="work-grid__item" data-type={c.data.type}>
+        <CaseCard href={casePath(c.data.slug, locale)} title={c.data.title} meta={meta(c)} lead={c.data.lead} tone={c.data.coverTone} size="md" cover={c.data.cover} coverAlt={c.data.coverAlt} />
+      </div>
+    ))}
+  </div>
+  <p class="work-empty wrap muted" hidden>{d.workPage.empty}</p>
+
+  <CtaBand />
+</Page>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; padding-block: 0.5rem 1.5rem; border-bottom: var(--line) solid var(--color-ink); margin-bottom: 1.75rem; }
+  .filter { padding-block: 0.5rem; border-bottom: var(--line) solid transparent; color: var(--color-label); transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+  .filter:hover { color: var(--color-ink); }
+  .filter.is-active { color: var(--color-ink); border-color: var(--color-accent); }
+  .work-grid { row-gap: 2rem; }
+  .work-grid__item { grid-column: 1 / -1; }
+  .work-grid__item[hidden] { display: none; }
+  @media (min-width: 700px) { .work-grid__item { grid-column: span 6; } }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter');
+  const items = document.querySelectorAll<HTMLElement>('.work-grid__item');
+  const empty = document.querySelector<HTMLElement>('.work-empty');
+  const apply = (f: string) => {
+    let n = 0;
+    items.forEach((el) => { const show = f === 'all' || el.dataset.type === f; el.hidden = !show; if (show) n++; });
+    buttons.forEach((b) => { const on = b.dataset.filter === f; b.classList.toggle('is-active', on); b.setAttribute('aria-pressed', String(on)); });
+    if (empty) empty.hidden = n > 0;
+    history.replaceState(null, '', f === 'all' ? location.pathname : `#${f}`);
+  };
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.filter!)));
+  const initial = location.hash.slice(1);
+  if (initial && [...buttons].some((b) => b.dataset.filter === initial)) apply(initial);
+</script>

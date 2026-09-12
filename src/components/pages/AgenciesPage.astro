@@ -1,0 +1,70 @@
+---
+/** Para agencias: proceso paso a paso, qué necesitamos, FAQ y brief rápido. */
+import Page from '../../layouts/Page.astro';
+import PageHead from '../PageHead.astro';
+import Faq from '../Faq.astro';
+import ContactForm from '../ContactForm.astro';
+import faq from '../../data/faq.json';
+import { resolveLocale, dict } from '../../i18n';
+
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+const a = d.agenciesPage;
+const title = `${a.kicker} · ${d.meta.siteName}`;
+---
+<Page title={title} description={a.lead}>
+  <PageHead kicker={a.kicker} title={d.agencies.title} lead={a.lead} size="section" preLine />
+
+  <section class="section wrap">
+    <h2 class="section__title">{a.processTitle}</h2>
+    <ol class="process" role="list">
+      {a.steps.map((s, i) => (
+        <li class="pstep">
+          <span class="display pstep__num accent">0{i + 1}</span>
+          <h3 class="display pstep__title">{s.t}</h3>
+          <p class="muted">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section wrap grid-12 need">
+    <h2 class="section__title need__title">{a.needTitle}</h2>
+    <ul class="need__list" role="list">{a.need.map((x) => <li class="display">{x}</li>)}</ul>
+  </section>
+
+  <section class="section wrap grid-12 faqs">
+    <h2 class="section__title faqs__title">{a.faqTitle}</h2>
+    <div class="faqs__body"><Faq items={faq[locale]} /></div>
+  </section>
+
+  <section class="section wrap grid-12 brief on-dark-wrap" id="brief">
+    <div class="brief__head">
+      <p class="kicker">{a.briefTitle}</p>
+      <h2 class="display brief__title">{d.common.cta}</h2>
+      <p class="lead">{a.briefLead}</p>
+    </div>
+    <div class="brief__form"><ContactForm variant="brief" id="brief-form" /></div>
+  </section>
+</Page>
+
+<style>
+  .process { display: grid; gap: var(--gap); }
+  .pstep { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.5rem; border: var(--line-thin) solid var(--color-ink); }
+  .pstep__num { font-size: var(--fs-h2); line-height: 0.9; }
+  .pstep__title { font-size: var(--fs-row); line-height: 1; }
+  .need, .faqs, .brief { row-gap: 1.5rem; align-items: start; }
+  .need__title, .faqs__title, .brief__head, .need__list, .faqs__body, .brief__form { grid-column: 1 / -1; }
+  .need__list li { font-size: var(--fs-row); line-height: 1; padding-block: 0.875rem; border-top: var(--line-thin) solid var(--color-ink); }
+  .need__list li:last-child { border-bottom: var(--line-thin) solid var(--color-ink); }
+  .brief { border-top: var(--line) solid var(--color-ink); }
+  .brief__head { display: flex; flex-direction: column; gap: 1rem; }
+  .brief__title { font-size: var(--fs-block); line-height: 0.9; }
+  @media (min-width: 700px) { .process { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 900px) {
+    .process { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .need__title, .faqs__title, .brief__head { grid-column: 1 / span 4; }
+    .need__list, .faqs__body, .brief__form { grid-column: 6 / span 7; }
+    .brief__head { position: sticky; top: 2rem; }
+  }
+</style>

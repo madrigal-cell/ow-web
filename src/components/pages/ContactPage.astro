@@ -1,0 +1,29 @@
+---
+/** Contacto: formulario corto y datos directos. */
+import Page from '../../layouts/Page.astro';
+import PageHead from '../PageHead.astro';
+import ContactForm from '../ContactForm.astro';
+import ContactInfo from '../ContactInfo.astro';
+import { resolveLocale, dict } from '../../i18n';
+
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+const c = d.contactPage;
+const title = `${c.kicker} · ${d.meta.siteName}`;
+---
+<Page title={title} description={`${c.title} ${c.lead}`}>
+  <PageHead kicker={c.kicker} title={c.title} lead={c.lead} size="block" />
+  <section class="contact wrap grid-12">
+    <div class="contact__form"><ContactForm variant="contact" id="contact-form" /></div>
+    <aside class="contact__info"><ContactInfo /></aside>
+  </section>
+</Page>
+
+<style>
+  .contact { padding-block: 1rem var(--section-y-lg); row-gap: 3rem; align-items: start; }
+  .contact__form, .contact__info { grid-column: 1 / -1; }
+  @media (min-width: 900px) {
+    .contact__form { grid-column: 1 / span 7; }
+    .contact__info { grid-column: 9 / span 4; position: sticky; top: 2rem; }
+  }
+</style>

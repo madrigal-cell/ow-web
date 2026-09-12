@@ -1,0 +1,74 @@
+---
+/** Página de un servicio: titular SEO, texto, qué incluye, cómo trabajamos, trabajos relacionados. */
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import PageHead from '../PageHead.astro';
+import CaseCard from '../CaseCard.astro';
+import CtaBand from '../CtaBand.astro';
+import { resolveLocale, dict, casePath, servicePath, type Locale } from '../../i18n';
+
+interface Props { entry: CollectionEntry<'servicios'> }
+const { entry } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const other: Locale = locale === 'es' ? 'en' : 'es';
+const d = dict(locale);
+const s = entry.data;
+const { Content } = await render(entry);
+const types = d.types as Record<string, string>;
+const related = (await getCollection('casos', ({ data }) => data.lang === locale && data.type === s.caseType)).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
+const steps = [[d.servicesPage.s1t, d.servicesPage.s1], [d.servicesPage.s2t, d.servicesPage.s2], [d.servicesPage.s3t, d.servicesPage.s3]];
+---
+<Page title={s.seoTitle} description={s.seoDescription} alternate={servicePath(s.key, other)}>
+  <PageHead kicker={`${d.servicesPage.kicker} · ${s.title}`} title={s.headline} lead={s.lead} size="block" />
+
+  <section class="svc wrap grid-12">
+    <div class="prose svc__prose"><Content /></div>
+    <div class="svc__includes">
+      <h2 class="section__title">{d.servicesPage.includes}</h2>
+      <ul class="includes" role="list">{s.items.map((x) => <li class="display">{x}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2 class="section__title">{d.servicesPage.how}</h2>
+    <ol class="steps" role="list">
+      {steps.map(([t, x], i) => (
+        <li class="step"><span class="display step__num accent">0{i + 1}</span><h3 class="display step__title">{t}</h3><p class="muted">{x}</p></li>
+      ))}
+    </ol>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section wrap">
+      <h2 class="section__title">{d.servicesPage.related}</h2>
+      <div class="grid-12 related">
+        {related.map((c) => (
+          <CaseCard href={casePath(c.data.slug, locale)} title={c.data.title} meta={[types[c.data.type], c.data.duration].filter(Boolean).join(' · ')} tone={c.data.coverTone} size="sm" cover={c.data.cover} coverAlt={c.data.coverAlt} />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <CtaBand />
+</Page>
+
+<style>
+  .svc { padding-block: var(--section-y); row-gap: 2.5rem; align-items: start; }
+  .svc__prose { grid-column: 1 / -1; }
+  .svc__includes { grid-column: 1 / -1; }
+  .includes li { font-size: var(--fs-row); line-height: 1; padding-block: 0.875rem; border-top: var(--line-thin) solid var(--color-ink); }
+  .includes li:last-child { border-bottom: var(--line-thin) solid var(--color-ink); }
+  .steps { display: grid; gap: var(--gap); }
+  .step { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.5rem; border: var(--line-thin) solid var(--color-ink); }
+  .step__num { font-size: var(--fs-row); line-height: 1; }
+  .step__title { font-size: var(--fs-row); line-height: 1; }
+  .related > :global(*) { grid-column: 1 / -1; }
+  @media (min-width: 700px) {
+    .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .related > :global(*) { grid-column: span 4; }
+  }
+  @media (min-width: 900px) {
+    .svc__prose { grid-column: 1 / span 6; }
+    .svc__includes { grid-column: 8 / span 5; }
+  }
+</style>

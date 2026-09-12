@@ -1,0 +1,27 @@
+---
+/** Preguntas frecuentes con <details>: accesible, sin JS, y legible por buscadores e IAs. */
+interface Props { items: { q: string; a: string }[] }
+const { items } = Astro.props;
+---
+<div class="faq">
+  {items.map((it) => (
+    <details class="faq__item">
+      <summary class="faq__q"><span class="display">{it.q}</span><span class="faq__icon" aria-hidden="true"></span></summary>
+      <p class="faq__a">{it.a}</p>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq__item { border-top: var(--line-thin) solid var(--color-ink); }
+  .faq__item:last-child { border-bottom: var(--line-thin) solid var(--color-ink); }
+  .faq__q { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding-block: 1.125rem; font-size: var(--fs-row); line-height: 1; }
+  .faq__q::-webkit-details-marker { display: none; }
+  .faq__icon { position: relative; width: 22px; height: 22px; flex: none; }
+  .faq__icon::before, .faq__icon::after { content: ''; position: absolute; inset: 0; margin: auto; background: currentColor; transition: transform var(--dur) var(--ease); }
+  .faq__icon::before { width: 22px; height: 3px; }
+  .faq__icon::after { width: 3px; height: 22px; }
+  .faq__item[open] .faq__icon::after { transform: rotate(90deg); }
+  .faq__item[open] .faq__q { color: var(--color-accent); }
+  .faq__a { padding-bottom: 1.5rem; max-width: 68ch; font-size: var(--fs-lead); line-height: 1.5; }
+</style>
