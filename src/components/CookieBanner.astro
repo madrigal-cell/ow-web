@@ -1,0 +1,63 @@
+---
+/**
+ * Aviso de cookies mínimo. No se instala ninguna cookie hasta que el visitante acepta.
+ * La decisión se guarda en localStorage ("ow-consent") 12 meses. El enlace del pie la reabre.
+ */
+import { resolveLocale, dict, path } from '../i18n';
+interface Props { gaId: string }
+const { gaId } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+---
+<div class="cookie on-dark" id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-text" data-ga={gaId} hidden>
+  <div class="cookie__inner wrap">
+    <div class="cookie__body">
+      <p id="cookie-title" class="label accent">{d.cookies.title}</p>
+      <p id="cookie-text">{d.cookies.text} <a href={path('cookies', locale)}>{d.cookies.more}</a></p>
+    </div>
+    <div class="cookie__actions">
+      <button class="btn btn--accent label" type="button" data-consent="accept">{d.cookies.accept}</button>
+      <button class="btn label cookie__reject" type="button" data-consent="reject">{d.cookies.reject}</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; border-top: var(--line) solid var(--color-accent); }
+  .cookie__inner { display: flex; flex-direction: column; gap: 1rem; padding-block: 1.25rem; }
+  .cookie__body { display: flex; flex-direction: column; gap: 0.375rem; font-size: var(--fs-small); color: var(--color-text-dark); }
+  .cookie__body a { border-bottom: var(--line-thin) solid currentColor; color: var(--color-bg); }
+  .cookie__actions { display: flex; gap: 0.75rem; }
+  .cookie__actions .btn { padding: 0.875rem 1.25rem; }
+  .cookie__reject { background: transparent; color: var(--color-bg); box-shadow: inset 0 0 0 2px var(--color-line-dark); }
+  .cookie__reject:hover { background: var(--color-bg); color: var(--color-ink); }
+  @media (min-width: 900px) {
+    .cookie__inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem; }
+    .cookie__body { max-width: 60ch; }
+  }
+</style>
+
+<script>
+  const KEY = 'ow-consent';
+  const banner = document.getElementById('cookie-banner') as HTMLElement | null;
+  const gaId = banner?.dataset.ga;
+  type Consent = { choice: 'accept' | 'reject'; ts: number };
+  const read = (): Consent | null => { try { const v = JSON.parse(localStorage.getItem(KEY) ?? 'null'); return v && Date.now() - v.ts < 365 * 864e5 ? v : null; } catch { return null; } };
+  const write = (choice: Consent['choice']) => { try { localStorage.setItem(KEY, JSON.stringify({ choice, ts: Date.now() })); } catch {} };
+  let loaded = false;
+  const loadGa = () => {
+    if (loaded || !gaId) return; loaded = true;
+    const s = document.createElement('script'); s.async = true; s.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`; document.head.appendChild(s);
+    const w = window as unknown as { dataLayer: unknown[]; gtag: (...a: unknown[]) => void };
+    w.dataLayer = w.dataLayer || []; w.gtag = function () { w.dataLayer.push(arguments); };
+    w.gtag('js', new Date()); w.gtag('config', gaId, { anonymize_ip: true });
+  };
+  const show = () => { if (banner) banner.hidden = false; };
+  const hide = () => { if (banner) banner.hidden = true; };
+  banner?.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((b) => b.addEventListener('click', () => {
+    const c = b.dataset.consent as Consent['choice']; write(c); hide(); if (c === 'accept') loadGa();
+  }));
+  const saved = read();
+  if (!saved) show(); else if (saved.choice === 'accept') loadGa();
+  document.querySelectorAll('.js-cookie-settings').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); show(); }));
+</script>

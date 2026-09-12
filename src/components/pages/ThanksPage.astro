@@ -1,0 +1,22 @@
+---
+/** Página de confirmación tras enviar un formulario. Sin indexar. */
+import Page from '../../layouts/Page.astro';
+import { resolveLocale, dict, path } from '../../i18n';
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+---
+<Page title={`${d.thanks.title} · ${d.meta.siteName}`} description={d.thanks.text} noindex>
+  <section class="wrap thanks">
+    <h1 class="display" style="font-size: var(--fs-section)">{d.thanks.title}</h1>
+    <p class="lead">{d.thanks.text}</p>
+    <div class="thanks__links">
+      <a class="label link-rule" href={path('work', locale)}>{d.thanks.work}</a>
+      <a class="label link-rule" href={path('home', locale)}>{d.thanks.back}</a>
+    </div>
+  </section>
+</Page>
+<style>
+  .thanks { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; align-items: flex-start; padding-block: var(--section-y); }
+  .thanks .lead { max-width: 50ch; }
+  .thanks__links { display: flex; gap: 2rem; flex-wrap: wrap; }
+</style>

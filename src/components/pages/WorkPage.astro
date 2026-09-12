@@ -5,7 +5,7 @@ import Page from '../../layouts/Page.astro';
 import PageHead from '../PageHead.astro';
 import CaseCard from '../CaseCard.astro';
 import CtaBand from '../CtaBand.astro';
-import { resolveLocale, dict, casePath } from '../../i18n';
+import { resolveLocale, dict, casePath, path } from '../../i18n';
 
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
@@ -15,7 +15,7 @@ const present = (['evento', 'marca', 'institucional', 'foto'] as const).filter((
 const meta = (c: (typeof cases)[number]) => [types[c.data.type], c.data.duration].filter(Boolean).join(' · ');
 const title = `${d.workPage.kicker} · ${d.meta.siteName}`;
 ---
-<Page title={title} description={d.workPage.lead}>
+<Page title={title} description={d.workPage.lead} crumbs={[{ name: d.workPage.kicker, href: path('work', locale) }]}>
   <PageHead kicker={d.workPage.kicker} title={d.workPage.title} lead={d.workPage.lead} />
 
   <div class="filters wrap" role="group" aria-label={d.workPage.kicker}>

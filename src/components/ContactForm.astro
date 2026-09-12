@@ -11,9 +11,10 @@ const d = dict(locale);
 const f = d.form;
 const action = variant === 'brief' ? '/api/brief.php' : '/api/contacto.php';
 ---
-<form class="form" id={id} action={action} method="post" novalidate>
+<form class="form" id={id} action={action} method="post" data-ok={f.ok} data-error={f.error} data-sending={f.sending}>
   <input type="hidden" name="lang" value={locale} />
   <input type="hidden" name="source" value={variant} />
+  <input type="hidden" name="t" value={Date.now()} />
   <p class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></p>
 
   <div class="field half"><label class="field__label" for={`${id}-name`}>{f.name} <abbr title={f.required}>*</abbr></label><input id={`${id}-name`} name="name" type="text" required autocomplete="name" /></div>
@@ -48,11 +49,36 @@ const action = variant === 'brief' ? '/api/brief.php' : '/api/contacto.php';
 
   <div class="form__actions">
     <button class="btn label" type="submit">{variant === 'brief' ? f.sendBrief : f.send}</button>
-    <span class="form__note">* {f.required}. {f.pending}</span>
+    <span class="form__note">* {f.required}.</span>
   </div>
+  <p class="form__status lead" role="status" aria-live="polite" hidden></p>
 </form>
 
+<script>
+  // Envío sin recargar; si falla el JS, el formulario se envía igual por POST normal.
+  document.querySelectorAll<HTMLFormElement>('form.form').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('.form__status');
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const say = (msg: string, ok: boolean) => { if (!status) return; status.textContent = msg; status.hidden = false; status.classList.toggle('is-error', !ok); };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const label = btn?.textContent ?? '';
+      if (btn) { btn.disabled = true; btn.textContent = form.dataset.sending ?? label; }
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) { form.querySelectorAll<HTMLElement>('.field, .consent, .form__actions, fieldset').forEach((el) => (el.hidden = true)); say(form.dataset.ok ?? 'OK', true); }
+        else say(form.dataset.error ?? 'Error', false);
+      } catch { say(form.dataset.error ?? 'Error', false); }
+      finally { if (btn) { btn.disabled = false; btn.textContent = label; } }
+    });
+  });
+</script>
+
 <style>
+  .form__status { padding: 1rem 1.25rem; border: var(--line) solid var(--color-ink); }
+  .form__status.is-error { border-color: var(--color-accent); }
   fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   legend { padding: 0; margin-bottom: 0.5rem; }
   .form__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }

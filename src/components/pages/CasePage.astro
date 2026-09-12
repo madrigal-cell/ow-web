@@ -7,6 +7,7 @@ import PageHead from '../PageHead.astro';
 import VimeoEmbed from '../VimeoEmbed.astro';
 import CtaBand from '../CtaBand.astro';
 import { resolveLocale, dict, casePath, path } from '../../i18n';
+import { videoObject } from '../../lib/schema';
 
 interface Props { entry: CollectionEntry<'casos'> }
 const { entry } = Astro.props;
@@ -21,6 +22,8 @@ const idx = all.findIndex((e) => e.data.slug === c.slug);
 const next = all[(idx + 1) % all.length];
 const kicker = [types[c.type], c.client, c.agency].filter(Boolean).join(' · ');
 const title = `${c.title} · ${d.meta.siteName}`;
+const crumbs = [{ name: d.workPage.kicker, href: path('work', locale) }, { name: c.title, href: casePath(c.slug, locale) }];
+const schema = c.vimeoId ? [videoObject({ name: c.title, description: c.lead, vimeoId: c.vimeoId, thumbnail: c.cover?.src, uploadDate: c.date, duration: c.duration, pageUrl: casePath(c.slug, locale) })] : [];
 const facts = [
   [d.casePage.client, c.client],
   [d.casePage.agency, c.agency],
@@ -29,7 +32,7 @@ const facts = [
   [d.casePage.duration, c.duration],
 ].filter(([, v]) => v);
 ---
-<Page title={title} description={c.lead} ogType="article">
+<Page title={title} description={c.lead} ogType="article" ogImage={c.cover?.src} crumbs={crumbs} schema={schema}>
   <PageHead kicker={kicker} title={c.title} lead={c.lead} size="block">
     {c.pending && <p class="pending-note page-head__note">{d.casePage.pending}</p>}
   </PageHead>

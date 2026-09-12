@@ -4,14 +4,14 @@ import Page from '../../layouts/Page.astro';
 import PageHead from '../PageHead.astro';
 import ContactForm from '../ContactForm.astro';
 import ContactInfo from '../ContactInfo.astro';
-import { resolveLocale, dict } from '../../i18n';
+import { resolveLocale, dict, path } from '../../i18n';
 
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
 const c = d.contactPage;
 const title = `${c.kicker} · ${d.meta.siteName}`;
 ---
-<Page title={title} description={`${c.title} ${c.lead}`}>
+<Page title={title} description={`${c.title} ${c.lead}`} crumbs={[{ name: c.kicker, href: path('contact', locale) }]}>
   <PageHead kicker={c.kicker} title={c.title} lead={c.lead} size="block" />
   <section class="contact wrap grid-12">
     <div class="contact__form"><ContactForm variant="contact" id="contact-form" /></div>

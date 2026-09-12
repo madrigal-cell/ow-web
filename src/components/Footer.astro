@@ -4,6 +4,7 @@ import { resolveLocale, dict, path } from '../i18n';
 import { site } from '../data/site';
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
+const gaId = import.meta.env.PUBLIC_GA4_ID as string | undefined;
 ---
 <footer class="footer rule-top">
   <div class="footer__inner wrap">
@@ -12,7 +13,7 @@ const d = dict(locale);
       <p><a href={`mailto:${site.email}`}>{site.email}</a> · <a href={site.phone.href}>{d.footer.phone}</a></p>
       <p>{d.footer.address}</p>
       <p><a href={site.social.linkedin} rel="noopener" target="_blank">LinkedIn</a>{' · '}<a href={site.social.instagram} rel="noopener" target="_blank">Instagram</a>{' · '}<a href={site.social.vimeo} rel="noopener" target="_blank">Vimeo</a></p>
-      <p class="footer__legal">{site.legalName}{' · '}<a href={path('legal', locale)}>{d.footer.legal}</a>{' · '}<a href={path('privacy', locale)}>{d.footer.privacy}</a>{' · '}<a href={path('cookies', locale)}>{d.footer.cookies}</a></p>
+      <p class="footer__legal">{site.legalName}{' · '}<a href={path('legal', locale)}>{d.footer.legal}</a>{' · '}<a href={path('privacy', locale)}>{d.footer.privacy}</a>{' · '}<a href={path('cookies', locale)}>{d.footer.cookies}</a>{gaId && <>{' · '}<a href="#" class="js-cookie-settings">{d.cookies.settings}</a></>}</p>
     </div>
   </div>
 </footer>

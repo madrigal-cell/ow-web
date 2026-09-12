@@ -5,7 +5,8 @@ import Page from '../../layouts/Page.astro';
 import PageHead from '../PageHead.astro';
 import CaseCard from '../CaseCard.astro';
 import CtaBand from '../CtaBand.astro';
-import { resolveLocale, dict, casePath, servicePath, type Locale } from '../../i18n';
+import { resolveLocale, dict, casePath, servicePath, path, type Locale } from '../../i18n';
+import { service } from '../../lib/schema';
 
 interface Props { entry: CollectionEntry<'servicios'> }
 const { entry } = Astro.props;
@@ -16,9 +17,11 @@ const s = entry.data;
 const { Content } = await render(entry);
 const types = d.types as Record<string, string>;
 const related = (await getCollection('casos', ({ data }) => data.lang === locale && data.type === s.caseType)).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
+const crumbs = [{ name: d.servicesPage.kicker, href: path('services', locale) }, { name: s.title, href: servicePath(s.key, locale) }];
+const schema = [service({ name: s.headline, description: s.seoDescription, pageUrl: servicePath(s.key, locale), items: s.items, locale })];
 const steps = [[d.servicesPage.s1t, d.servicesPage.s1], [d.servicesPage.s2t, d.servicesPage.s2], [d.servicesPage.s3t, d.servicesPage.s3]];
 ---
-<Page title={s.seoTitle} description={s.seoDescription} alternate={servicePath(s.key, other)}>
+<Page title={s.seoTitle} description={s.seoDescription} alternate={servicePath(s.key, other)} crumbs={crumbs} schema={schema}>
   <PageHead kicker={`${d.servicesPage.kicker} · ${s.title}`} title={s.headline} lead={s.lead} size="block" />
 
   <section class="svc wrap grid-12">

@@ -1,27 +1,34 @@
 ---
-/** Página legal (aviso legal, privacidad, cookies). Sin indexar hasta tener el texto definitivo. */
+/** Página legal (aviso legal, privacidad, cookies) desde src/content/legal. Sin indexar mientras sea borrador. */
+import { getCollection, render } from 'astro:content';
 import Page from '../../layouts/Page.astro';
 import PageHead from '../PageHead.astro';
-import { resolveLocale, dict } from '../../i18n';
-import { site } from '../../data/site';
+import { resolveLocale, dict, path } from '../../i18n';
 
 interface Props { kind: 'legal' | 'privacy' | 'cookies' }
 const { kind } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
-const titles = { legal: d.legal.legalTitle, privacy: d.legal.privacyTitle, cookies: d.legal.cookiesTitle } as const;
-const title = `${titles[kind]} · ${d.meta.siteName}`;
+const entry = (await getCollection('legal', ({ data }) => data.lang === locale && data.kind === kind))[0];
+if (!entry) throw new Error(`Falta el texto legal ${kind}/${locale} en src/content/legal`);
+const { Content } = await render(entry);
+const title = `${entry.data.title} · ${d.meta.siteName}`;
+const crumbs = [{ name: entry.data.title, href: path(kind, locale) }];
 ---
-<Page title={title} description={titles[kind]} noindex>
-  <PageHead title={titles[kind]} size="block" />
+<Page title={title} description={entry.data.title} noindex={entry.data.draft} crumbs={crumbs}>
+  <PageHead title={entry.data.title} size="block">
+    <p class="legal__meta">{entry.data.draft && <span class="pending-note">{d.legal.draft}</span>} <span class="muted">{d.legal.updated}: {entry.data.updated}</span></p>
+  </PageHead>
   <section class="wrap legal">
-    <div class="prose">
-      <p class="pending-note">{d.legal.pending}</p>
-      <p>{site.legalName} · CIF {site.cif} · {site.address.street}, {site.address.postalCode} {site.address.city} · <a href={`mailto:${site.email}`}>{site.email}</a></p>
-    </div>
+    <div class="prose"><Content /></div>
   </section>
 </Page>
 
 <style>
   .legal { padding-block: 1rem var(--section-y-lg); }
+  .legal__meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; font-size: var(--fs-small); }
+  .legal :global(table) { border-collapse: collapse; width: 100%; font-size: var(--fs-body); }
+  .legal :global(th), .legal :global(td) { text-align: left; vertical-align: top; padding: 0.625rem 0.75rem 0.625rem 0; border-top: var(--line-thin) solid var(--color-ink); }
+  .legal :global(th) { font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .legal :global(code) { font-family: ui-monospace, Menlo, monospace; font-size: 0.9em; }
 </style>

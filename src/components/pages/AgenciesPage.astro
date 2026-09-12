@@ -5,14 +5,17 @@ import PageHead from '../PageHead.astro';
 import Faq from '../Faq.astro';
 import ContactForm from '../ContactForm.astro';
 import faq from '../../data/faq.json';
-import { resolveLocale, dict } from '../../i18n';
+import { resolveLocale, dict, path } from '../../i18n';
+import { faqPage } from '../../lib/schema';
 
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
 const a = d.agenciesPage;
 const title = `${a.kicker} · ${d.meta.siteName}`;
+const crumbs = [{ name: a.kicker, href: path('agencies', locale) }];
+const schema = [faqPage(faq[locale])];
 ---
-<Page title={title} description={a.lead}>
+<Page title={title} description={a.lead} crumbs={crumbs} schema={schema}>
   <PageHead kicker={a.kicker} title={d.agencies.title} lead={a.lead} size="section" preLine />
 
   <section class="section wrap">

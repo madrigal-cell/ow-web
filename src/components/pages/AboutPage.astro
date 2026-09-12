@@ -5,7 +5,8 @@ import { Image } from 'astro:assets';
 import Page from '../../layouts/Page.astro';
 import PageHead from '../PageHead.astro';
 import CtaBand from '../CtaBand.astro';
-import { resolveLocale, dict } from '../../i18n';
+import { resolveLocale, dict, path } from '../../i18n';
+import { people } from '../../lib/schema';
 
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
@@ -13,10 +14,12 @@ const a = d.aboutPage;
 const team = (await getCollection('equipo')).sort((x, y) => x.data.order - y.data.order);
 const founders = team.filter((p) => p.data.founder);
 const rest = team.filter((p) => !p.data.founder);
-const anyPending = team.some((p) => p.data.pending);
+const anyPending = team.some((p) => !p.data.photo);
 const title = `${a.kicker} · ${d.meta.siteName}`;
+const crumbs = [{ name: a.kicker, href: path('about', locale) }];
+const schema = people(team.map((p) => ({ name: p.data.name, role: p.data.role[locale], photo: p.data.photo?.src })));
 ---
-<Page title={title} description={a.geo}>
+<Page title={title} description={a.geo} crumbs={crumbs} schema={schema}>
   <PageHead kicker={a.kicker} title={d.about.title} size="block" preLine />
 
   <section class="wrap grid-12 geo">
@@ -29,7 +32,7 @@ const title = `${a.kicker} · ${d.meta.siteName}`;
       {founders.map((p) => (
         <article class="person">
           <div class="person__photo person__photo--ink">{p.data.photo ? <Image src={p.data.photo} alt={p.data.name} widths={[400, 800]} sizes="(min-width: 900px) 40vw, 100vw" loading="lazy" /> : <span class="label">{a.photoPending}</span>}</div>
-          <h3 class="display person__name">{p.data.name}</h3>
+          <h3 class="display person__name">{p.data.name}{p.data.nick && <span class="person__nick"> · {p.data.nick}</span>}</h3>
           <p class="muted">{p.data.role[locale]}</p>
         </article>
       ))}
@@ -43,7 +46,7 @@ const title = `${a.kicker} · ${d.meta.siteName}`;
         {rest.map((p) => (
           <article class="person">
             <div class="person__photo person__photo--paper">{p.data.photo ? <Image src={p.data.photo} alt={p.data.name} widths={[300, 600]} sizes="(min-width: 900px) 25vw, 50vw" loading="lazy" /> : <span class="label">{a.photoPending}</span>}</div>
-            <h3 class="display person__name person__name--sm">{p.data.name}</h3>
+            <h3 class="display person__name person__name--sm">{p.data.name}{p.data.nick && <span class="person__nick"> · {p.data.nick}</span>}</h3>
             <p class="muted">{p.data.role[locale]}</p>
           </article>
         ))}
@@ -79,6 +82,7 @@ const title = `${a.kicker} · ${d.meta.siteName}`;
   .person__photo :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .person__name { font-size: var(--fs-card); line-height: 1; margin-top: 0.25rem; }
   .person__name--sm { font-size: var(--fs-card-sm); }
+  .person__nick { color: var(--color-accent); }
   .studio { row-gap: 2rem; align-items: start; }
   .studio__visual { grid-column: 1 / -1; aspect-ratio: 16 / 10; background: var(--color-accent); }
   .studio__text { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1rem; }

@@ -4,14 +4,14 @@ import { getCollection } from 'astro:content';
 import Page from '../../layouts/Page.astro';
 import PageHead from '../PageHead.astro';
 import CtaBand from '../CtaBand.astro';
-import { resolveLocale, dict, servicePath } from '../../i18n';
+import { resolveLocale, dict, servicePath, path } from '../../i18n';
 
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
 const services = (await getCollection('servicios', ({ data }) => data.lang === locale)).sort((a, b) => a.data.order - b.data.order);
 const title = `${d.servicesPage.kicker} · ${d.meta.siteName}`;
 ---
-<Page title={title} description={d.servicesPage.lead}>
+<Page title={title} description={d.servicesPage.lead} crumbs={[{ name: d.servicesPage.kicker, href: path('services', locale) }]}>
   <PageHead kicker={d.servicesPage.kicker} title={d.servicesPage.title} lead={d.servicesPage.lead} />
 
   <ol class="services wrap" role="list">
