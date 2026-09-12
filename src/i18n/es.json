@@ -28,7 +28,7 @@
     "services": "Spots · Contenido de marca · Eventos y congresos · Fotografía"
   },
   "showreel": {
-    "rec": "REC · Showreel 2026 · 00:48",
+    "rec": "REC · Reel {year} · {duration}",
     "title": "Dale al play.\nEs lo que hay.",
     "play": "Reproducir showreel",
     "pending": "Showreel 2026 en producción. Mientras tanto, póster estático."

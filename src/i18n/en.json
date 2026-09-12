@@ -28,7 +28,7 @@
     "services": "Commercials · Branded content · Events & conferences · Photography"
   },
   "showreel": {
-    "rec": "REC · Showreel 2026 · 00:48",
+    "rec": "REC · Reel {year} · {duration}",
     "title": "Press play.\nThat's the pitch.",
     "play": "Play showreel",
     "pending": "Showreel 2026 in production. Static poster for now."
