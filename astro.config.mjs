@@ -47,7 +47,9 @@ export default defineConfig({
         defaultLocale: 'es',
         locales: { es: 'es-ES', en: 'en' },
       },
-      filter: (page) => !page.includes('/404'),
+      // Fuera del sitemap: 404, páginas de gracias y legales mientras sean borrador.
+      filter: (page) =>
+        !['/404', '/gracias/', '/en/thanks/', '/aviso-legal/', '/privacidad/', '/cookies/', '/en/legal-notice/', '/en/privacy/', '/en/cookies/'].some((p) => page.endsWith(p)),
     }),
   ],
 });

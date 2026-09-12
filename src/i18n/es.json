@@ -197,8 +197,11 @@
     "sendBrief": "Enviar brief",
     "consent": "He leído la política de privacidad y acepto que On White use estos datos para responderme.",
     "required": "Campos obligatorios",
-    "pending": "El envío del formulario se activa en el paso 4.",
-    "selectPlaceholder": "Elige una opción"
+    "pending": "",
+    "selectPlaceholder": "Elige una opción",
+    "ok": "Recibido. Te respondemos en un día laborable.",
+    "error": "No se ha podido enviar. Escríbenos a produccion@owmakers.com o llama al 955 295 612.",
+    "sending": "Enviando…"
   },
   "aboutPage": {
     "kicker": "Nosotros",
@@ -236,6 +239,25 @@
     "legalTitle": "Aviso legal",
     "privacyTitle": "Política de privacidad",
     "cookiesTitle": "Política de cookies",
-    "pending": "Texto legal pendiente de redactar y validar. Se publicará antes del lanzamiento."
+    "pending": "Texto legal pendiente de redactar y validar. Se publicará antes del lanzamiento.",
+    "draft": "Borrador pendiente de revisión legal. No es la versión definitiva.",
+    "updated": "Última actualización"
+  },
+  "thanks": {
+    "title": "Recibido.",
+    "text": "Gracias. Leemos el brief y te respondemos en un día laborable. Si corre prisa, llama al 955 295 612.",
+    "back": "Volver a la home →",
+    "work": "Ver trabajos →"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "text": "Solo usamos cookies de medición si las aceptas. Sin ellas la web funciona igual.",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "more": "Política de cookies",
+    "settings": "Configurar cookies"
+  },
+  "breadcrumb": {
+    "home": "Inicio"
   }
 }

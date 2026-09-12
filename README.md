@@ -40,6 +40,12 @@ public/                 Ficheros que se copian tal cual (robots.txt, favicon, im
 docs/                   Briefing, benchmark, decisiones, handoff y mockups aprobados.
 ```
 
+## Formularios, analítica y legales
+
+- Los formularios de Contacto y Para agencias envían por POST a `public/api/contacto.php` y `public/api/brief.php`, que se ejecutan en IONOS (PHP 8.0 o superior). El buzón de destino y el remitente se cambian en las constantes de `public/api/_mail.php`. Llevan honeypot y filtro de velocidad contra bots.
+- La analítica (GA4) solo se activa si `PUBLIC_GA4_ID` tiene valor en `.env` al compilar. Sin valor no hay aviso de cookies ni cookies.
+- Los textos legales viven en `src/content/legal/` (ES y EN). Mientras tengan `draft: true` se muestran con aviso de borrador y no se indexan; al validarlos, poner `draft: false`.
+
 ## Flujo de mantenimiento (resumen; se ampliará en el paso 5)
 
 1. Editar o añadir el fichero de contenido que toque (por ejemplo un caso en `src/content/casos/`).
@@ -53,6 +59,6 @@ Las credenciales de IONOS van en `.env` (copiar de `.env.example`). `.env` nunca
 - [x] Paso 1 · Scaffold Astro, tokens de diseño, i18n ES/EN, sitemap, layout base con SEO.
 - [x] Paso 2 · Home fiel al mockup (desktop 1440 y móvil 390): Nav, Hero, Showreel, Marquee, CaseCard, PromiseRow, Footer.
 - [x] Paso 3 · Colecciones (casos, servicios, equipo, testimonios) y páginas: Trabajos con filtro, ficha de caso, Servicios (índice + 3), Para agencias (proceso, FAQ, brief), Nosotros, Contacto y legales, en ES y EN. Datos de ejemplo marcados `pending`.
-- [ ] Paso 4 · SEO/GEO técnico, formulario PHP, `.htaccess` con 301.
+- [x] Paso 4 · SEO/GEO técnico (JSON-LD Organization/LocalBusiness/WebSite/BreadcrumbList/Service/FAQPage/Person/VideoObject, `llms.txt`, favicon e imagen OG con el logo real), formularios con PHP (`public/api/`, envían a produccion@owmakers.com), páginas de gracias, `.htaccess` con https, sin www y 301 desde la web antigua, aviso de cookies (solo si hay GA4), borradores legales en `src/content/legal/`.
 - [ ] Paso 5 · Script de deploy a IONOS y README de mantenimiento.
 - [ ] Paso 6 · Lighthouse móvil ≥ 90 en todas las páginas.

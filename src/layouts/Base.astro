@@ -2,26 +2,31 @@
 /**
  * Layout base de toda la web.
  * Se encarga de: <html lang>, metadatos SEO (title, description, canonical, hreflang, OG/Twitter),
- * fuentes autoalojadas, estilos globales y enlace "saltar al contenido".
- * Las páginas añaden JSON-LD u otros <head> extra con <Fragment slot="head">.
+ * datos estructurados JSON-LD, fuentes autoalojadas, estilos globales, aviso de cookies y "saltar al contenido".
+ * Las páginas añaden bloques JSON-LD con `schema` y migas de pan con `crumbs`.
  */
 import { Font } from 'astro:assets';
 import '../styles/global.css';
-import { resolveLocale, htmlLang, alternatePath, dict, type Locale } from '../i18n';
+import CookieBanner from '../components/CookieBanner.astro';
+import { resolveLocale, htmlLang, alternatePath, dict, path, type Locale } from '../i18n';
+import { site } from '../data/site';
+import { baseGraph, breadcrumbs } from '../lib/schema';
 
 interface Props {
   title?: string;
   description?: string;
-  /** Imagen OG absoluta o relativa a /. Por defecto /og-default.jpg */
+  /** Imagen OG absoluta o relativa a /. Por defecto la del sitio. */
   ogImage?: string;
-  /** Tipo OG: website (por defecto) o article. */
   ogType?: 'website' | 'article';
-  /** Evita indexación (páginas legales, 404, gracias). */
+  /** Evita indexación (legales en borrador, 404, gracias). */
   noindex?: boolean;
   /** Ruta equivalente en el otro idioma; si no se pasa, se deduce del mapa de rutas. */
   alternate?: string;
-  /** Clase extra para <body>. */
   bodyClass?: string;
+  /** Bloques JSON-LD adicionales de la página. */
+  schema?: Record<string, unknown>[];
+  /** Migas de pan (sin la home; se añade sola). */
+  crumbs?: { name: string; href: string }[];
 }
 
 const locale: Locale = resolveLocale(Astro.currentLocale);
@@ -31,20 +36,30 @@ const d = dict(locale);
 const {
   title = d.meta.defaultTitle,
   description = d.meta.defaultDescription,
-  ogImage = '/og-default.jpg',
+  ogImage = site.ogImage,
   ogType = 'website',
   noindex = false,
   alternate,
   bodyClass = '',
+  schema = [],
+  crumbs,
 } = Astro.props;
 
-const site = Astro.site ?? new URL('https://owmakers.com');
+const siteUrl = Astro.site ?? new URL(site.url);
 const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
-const canonical = new URL(pathname, site).href;
-const alternateHref = new URL(alternate ?? alternatePath(pathname, locale, other), site).href;
+const canonical = new URL(pathname, siteUrl).href;
+const alternateHref = new URL(alternate ?? alternatePath(pathname, locale, other), siteUrl).href;
 const esHref = locale === 'es' ? canonical : alternateHref;
 const enHref = locale === 'en' ? canonical : alternateHref;
-const ogImageAbs = new URL(ogImage, site).href;
+const ogImageAbs = new URL(ogImage, siteUrl).href;
+
+const graph = [
+  ...baseGraph(locale),
+  ...(crumbs ? [breadcrumbs([{ name: d.breadcrumb.home, href: path('home', locale) }, ...crumbs])] : []),
+  ...schema,
+];
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+const gaId = import.meta.env.PUBLIC_GA4_ID as string | undefined;
 ---
 
 <!doctype html>
@@ -69,6 +84,8 @@ const ogImageAbs = new URL(ogImage, site).href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -77,15 +94,19 @@ const ogImageAbs = new URL(ogImage, site).href;
     <meta name="theme-color" content="#f4f4f1" />
     <meta name="color-scheme" content="light" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <Font cssVariable="--font-display" preload={[{ subset: "latin" }]} />
     <Font cssVariable="--font-text" preload={[{ subset: "latin", weight: 400 }, { subset: "latin", weight: 700 }]} />
 
+    <script type="application/ld+json" set:html={jsonLd} />
     <slot name="head" />
   </head>
   <body class={bodyClass}>
     <a class="skip-link label" href="#main">{d.nav.skip}</a>
     <slot />
+    {gaId && <CookieBanner gaId={gaId} />}
   </body>
 </html>

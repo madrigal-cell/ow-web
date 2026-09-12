@@ -25,6 +25,7 @@ export const routes = {
   legal:            { es: '/aviso-legal/',                    en: '/en/legal-notice/' },
   privacy:          { es: '/privacidad/',                     en: '/en/privacy/' },
   cookies:          { es: '/cookies/',                        en: '/en/cookies/' },
+  thanks:           { es: '/gracias/',                        en: '/en/thanks/' },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type RouteKey = keyof typeof routes;

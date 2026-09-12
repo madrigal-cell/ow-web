@@ -21,6 +21,8 @@ const casos = defineCollection({
       year: z.number().int().optional(),
       vimeoId: z.string().optional(),
       duration: z.string().optional(),
+      /** Fecha de publicación del vídeo (AAAA-MM-DD), para los datos estructurados. */
+      date: z.string().optional(),
       cover: image().optional(),
       coverAlt: z.string().optional(),
       /** Color del hueco mientras no hay imagen de portada. */
@@ -61,11 +63,14 @@ const equipo = defineCollection({
   schema: ({ image }) =>
     z.object({
       name: z.string(),
+      /** Apodo con el que se le conoce en el sector (opcional). */
+      nick: z.string().optional(),
       role: z.object({ es: z.string(), en: z.string() }),
       photo: image().optional(),
       founder: z.boolean().default(false),
       order: z.number().default(99),
       linkedin: z.string().url().optional(),
+      /** true = pendiente de foto o datos. */
       pending: z.boolean().default(false),
     }),
 });
@@ -83,4 +88,16 @@ const testimonios = defineCollection({
   }),
 });
 
-export const collections = { casos, servicios, equipo, testimonios };
+/** Textos legales: legal/es/<kind>.md y legal/en/<kind>.md. `draft: true` = borrador sin revisar (no se indexa). */
+const legal = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/legal', generateId: byLangId }),
+  schema: z.object({
+    kind: z.enum(['legal', 'privacy', 'cookies']),
+    lang,
+    title: z.string(),
+    updated: z.string(),
+    draft: z.boolean().default(true),
+  }),
+});
+
+export const collections = { casos, servicios, equipo, testimonios, legal };
