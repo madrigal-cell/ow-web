@@ -1,0 +1,20 @@
+---
+/** Fila de promesa (Brief 24 h · Sin dobles tomas · Entrega rápida) sobre fondo negro. */
+interface Props { title: string; text: string }
+const { title, text } = Astro.props;
+---
+<li class="promise">
+  <h3 class="display promise__title">{title}</h3>
+  <p class="promise__text">{text}</p>
+</li>
+
+<style>
+  .promise { display: flex; flex-direction: column; gap: 0.375rem; padding-block: 1.125rem; border-top: var(--line-thin) solid var(--color-line-dark); }
+  .promise:last-child { border-bottom: var(--line-thin) solid var(--color-line-dark); }
+  .promise__title { font-size: var(--fs-row); line-height: 1; }
+  .promise__text { font-size: var(--fs-body); line-height: 1.45; color: var(--color-text-dark); }
+
+  @media (min-width: 900px) {
+    .promise { display: grid; grid-template-columns: 184px 1fr; gap: 1.5rem; padding-block: 1.5rem; }
+  }
+</style>

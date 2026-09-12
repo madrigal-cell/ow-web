@@ -1,0 +1,32 @@
+---
+/** Hero de la home: marca gigante, claim en acento y subtítulo. */
+import { resolveLocale, dict } from '../i18n';
+const d = dict(resolveLocale(Astro.currentLocale));
+---
+<section class="hero wrap grid-12">
+  <div class="hero__main">
+    <h1 class="display hero__brand">{d.hero.brand}</h1>
+    <p class="display hero__claim">{d.hero.claim}</p>
+  </div>
+  <div class="hero__aside">
+    <p class="lead">{d.hero.sub}</p>
+    <p class="label hero__services">{d.hero.services}</p>
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: 2rem 1.5rem; row-gap: 1.125rem; align-items: end; }
+  .hero__main { grid-column: 1 / -1; }
+  .hero__brand { font-size: var(--fs-hero); line-height: 0.86; }
+  .hero__claim { font-size: var(--fs-claim); line-height: 0.92; color: var(--color-accent); margin-top: 1.125rem; }
+  .hero__aside { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1.25rem; }
+  .hero__services { color: var(--color-label); display: none; }
+
+  @media (min-width: 900px) {
+    .hero { padding-block: 3.5rem 2.5rem; }
+    .hero__main { grid-column: 1 / span 9; }
+    .hero__claim { white-space: pre-line; margin-top: 1.5rem; }
+    .hero__aside { grid-column: 10 / span 3; padding-bottom: 0.75rem; }
+    .hero__services { display: block; }
+  }
+</style>

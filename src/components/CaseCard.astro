@@ -1,0 +1,48 @@
+---
+/** Tarjeta de caso. Sin imagen de portada, muestra un bloque de color (tone). */
+import { Image } from 'astro:assets';
+
+interface Props {
+  href: string;
+  title: string;
+  meta?: string;
+  lead?: string;
+  tone?: 'accent' | 'ink' | 'paper';
+  size?: 'lg' | 'md' | 'sm';
+  cover?: ImageMetadata;
+  coverAlt?: string;
+}
+const { href, title, meta, lead, tone = 'ink', size = 'md', cover, coverAlt = '' } = Astro.props;
+---
+<article class:list={['card', `card--${size}`]}>
+  <a class="card__link" href={href}>
+    <div class:list={['card__cover', `card__cover--${tone}`]}>
+      {cover && <Image src={cover} alt={coverAlt} widths={[480, 800, 1200]} sizes="(min-width: 900px) 60vw, 100vw" loading="lazy" />}
+      {meta && <span class="label card__meta">{meta}</span>}
+    </div>
+    <h3 class="display card__title">{title}</h3>
+    {lead && <p class="card__lead muted">{lead}</p>}
+  </a>
+</article>
+
+<style>
+  .card__link { display: flex; flex-direction: column; gap: 0.625rem; }
+  .card__cover { position: relative; aspect-ratio: 16 / 10; display: flex; align-items: flex-end; padding: 1rem; overflow: hidden; }
+  .card__cover--accent { background: var(--color-accent); color: var(--color-ink); }
+  .card__cover--ink { background: var(--color-ink); color: var(--color-bg); }
+  .card__cover--paper { background: var(--color-placeholder); color: var(--color-ink); }
+  .card__cover :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
+  .card__link:hover .card__cover :global(img) { transform: scale(1.03); }
+  .card__meta { position: relative; }
+  .card__title { font-size: var(--fs-card); line-height: 1; transition: color var(--dur) var(--ease); }
+  .card__link:hover .card__title { color: var(--color-accent); }
+  .card__lead { font-size: var(--fs-body); line-height: 1.4; }
+  .card--sm .card__cover { aspect-ratio: 3 / 2; padding: 0.75rem; }
+  .card--sm .card__title { font-size: var(--fs-card-sm); }
+  .card--sm .card__lead { display: none; }
+
+  @media (min-width: 900px) {
+    .card__link { gap: 0.875rem; }
+    .card__cover, .card--sm .card__cover { aspect-ratio: 16 / 9; padding: 1.5rem; }
+  }
+</style>

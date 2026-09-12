@@ -1,0 +1,65 @@
+---
+/** Sección Trabajos de la home: título, enlace a todos los casos y los 5 destacados. */
+import { getCollection } from 'astro:content';
+import CaseCard from './CaseCard.astro';
+import { resolveLocale, dict, useTranslations, path, casePath } from '../i18n';
+
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+const t = useTranslations(locale);
+const all = await getCollection('casos', ({ data }) => data.lang === locale);
+const featured = all
+  .filter((c) => c.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 5);
+const sizes = ['lg', 'md', 'sm', 'sm', 'sm'] as const;
+const types = d.types as Record<string, string>;
+const meta = (c: (typeof all)[number]) => [types[c.data.type], c.data.duration].filter(Boolean).join(' · ');
+---
+<section class="work" aria-labelledby="work-title">
+  <div class="work__head wrap">
+    <h2 id="work-title" class="display work__title">{d.work.title}</h2>
+    <a class="label link-rule" href={path('work', locale)}>
+      <span class="work__all">{t('work.seeAll', { n: all.length })}</span>
+      <span class="work__all-short">{t('work.seeAllShort', { n: all.length })}</span>
+    </a>
+  </div>
+  <div class="work__grid wrap grid-12">
+    {featured.map((c, i) => (
+      <CaseCard
+        href={casePath(c.data.slug, locale)}
+        title={c.data.title}
+        meta={meta(c)}
+        lead={c.data.lead}
+        tone={c.data.coverTone}
+        size={sizes[i]}
+        cover={c.data.cover}
+        coverAlt={c.data.coverAlt}
+      />
+    ))}
+  </div>
+</section>
+
+<style>
+  .work { padding-top: var(--section-y); }
+  .work__head { display: flex; justify-content: space-between; align-items: end; padding-bottom: 1rem; }
+  .work__title { font-size: var(--fs-section); line-height: 0.9; }
+  .work__all { display: none; }
+  .work__grid { row-gap: 1.75rem; }
+  .work__grid > :global(*) { grid-column: 1 / -1; }
+  .work__grid > :global(:nth-child(3)) { grid-column: 1 / span 6; }
+  .work__grid > :global(:nth-child(4)) { grid-column: 7 / span 6; }
+  .work__grid > :global(:nth-child(5)) { display: none; }
+
+  @media (min-width: 900px) {
+    .work__head { padding-bottom: 1.5rem; }
+    .work__all { display: inline; }
+    .work__all-short { display: none; }
+    .work__grid { row-gap: var(--gap); }
+    .work__grid > :global(:nth-child(1)) { grid-column: 1 / span 7; }
+    .work__grid > :global(:nth-child(2)) { grid-column: 8 / span 5; }
+    .work__grid > :global(:nth-child(3)) { grid-column: 1 / span 4; }
+    .work__grid > :global(:nth-child(4)) { grid-column: 5 / span 4; }
+    .work__grid > :global(:nth-child(5)) { grid-column: 9 / span 4; display: block; }
+  }
+</style>
