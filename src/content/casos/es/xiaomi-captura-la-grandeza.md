@@ -9,6 +9,7 @@ year: 2024
 vimeoId: "902383457"
 duration: "02:06"
 date: "2024-01-12"
+cover: "../../../assets/casos/xiaomi-captura-la-grandeza.jpg"
 coverTone: "accent"
 coverAlt: "Fotograma de la campaña Captura la grandeza de Xiaomi, Redmi Note 13 Series"
 deliverables:
