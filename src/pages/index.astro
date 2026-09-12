@@ -2,7 +2,11 @@
 // Home ES.
 import Page from '../layouts/Page.astro';
 import Home from '../components/Home.astro';
+import { site } from '../data/site';
+import { videoObject } from '../lib/schema';
+const s = site.showreel;
+const schema = s.vimeoId ? [videoObject({ name: s.title, description: 'Showreel de On White, productora audiovisual en Sevilla.', vimeoId: s.vimeoId, thumbnail: s.poster.src, uploadDate: s.date, duration: s.duration, pageUrl: '/' })] : [];
 ---
-<Page>
+<Page schema={schema}>
   <Home />
 </Page>

@@ -4,15 +4,20 @@
  * Con `site.showreel.vimeoId`: el botón carga el reproductor de Vimeo bajo demanda
  * (nada se descarga hasta que el usuario pulsa play: Core Web Vitals intactos).
  */
-import { resolveLocale, dict } from '../i18n';
+import { Image } from 'astro:assets';
+import { resolveLocale, dict, useTranslations } from '../i18n';
 import { site } from '../data/site';
-const d = dict(resolveLocale(Astro.currentLocale));
-const { vimeoId } = site.showreel;
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+const t = useTranslations(locale);
+const { vimeoId, year, duration, poster, title } = site.showreel;
+const rec = t('showreel.rec', { year, duration });
 ---
 <section class="reel wrap" aria-label="Showreel">
-  <div class="reel__frame" data-vimeo-id={vimeoId ?? undefined}>
+  <div class:list={['reel__frame', { 'reel__frame--poster': !!(vimeoId && poster) }]} data-vimeo-id={vimeoId ?? undefined}>
     <div class="reel__stripes" aria-hidden="true"></div>
-    <p class="label reel__rec"><span class="reel__dot" aria-hidden="true"></span>{d.showreel.rec}</p>
+    {vimeoId && poster && <Image class="reel__poster" src={poster} alt={title} widths={[640, 1024, 1600]} sizes="(min-width: 1600px) 1500px, 100vw" loading="eager" fetchpriority="high" />}
+    <p class="label reel__rec"><span class="reel__dot" aria-hidden="true"></span>{rec}</p>
     <div class="reel__cta">
       <button class="reel__play" type="button" aria-label={d.showreel.play} disabled={!vimeoId}>
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5v15l12-7.5-12-7.5z" fill="currentColor"/></svg>
@@ -37,6 +42,9 @@ const { vimeoId } = site.showreel;
   .reel__play:disabled { cursor: default; }
   .reel__title { font-size: var(--fs-h2); line-height: 0.95; white-space: pre-line; }
   .reel__note { display: none; }
+  .reel :global(.reel__poster) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .reel__frame--poster::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11, 11, 11, 0.75), rgba(11, 11, 11, 0.15) 55%, rgba(11, 11, 11, 0.35)); pointer-events: none; }
+  .reel__frame--poster .reel__rec, .reel__frame--poster .reel__cta { z-index: 1; }
   .reel__player { position: absolute; inset: 0; background: #000; }
   .reel__player :global(iframe) { width: 100%; height: 100%; border: 0; }
 
