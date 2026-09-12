@@ -17,17 +17,19 @@
     "switchLang": "Versión en español",
     "switchLangShort": "ES",
     "currentLangShort": "EN",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "hero": {
     "brand": "On White.",
-    "claim": "Black, white and everything in colour.",
+    "claim": "Black, white and\neverything in colour.",
     "sub": "Video production for event and communication agencies. Seville, Madrid and wherever you need us.",
     "services": "Commercials · Branded content · Events & conferences · Photography"
   },
   "showreel": {
     "rec": "REC · Showreel 2026 · 00:48",
-    "title": "Press play. That's the pitch.",
+    "title": "Press play.\nThat's the pitch.",
     "play": "Play showreel",
     "pending": "Showreel 2026 in production. Static poster for now."
   },
@@ -38,7 +40,7 @@
   },
   "agencies": {
     "kicker": "For agencies",
-    "title": "You sell the idea. We shoot it.",
+    "title": "You sell the idea.\nWe shoot it.",
     "p1t": "Brief in 24 h",
     "p1": "Send us the brief and within one working day you get a fixed quote, a shooting plan and the crew list.",
     "p2t": "No second takes",
@@ -47,7 +49,7 @@
     "p3": "Same-day edit, aftermovie in 24-48 h, photos the same day. Your campaign sets the deadline, not our calendar."
   },
   "about": {
-    "title": "Seville. Own studio. Own cameras. Own stubbornness.",
+    "title": "Seville.\nOwn studio.\nOwn cameras.\nOwn stubbornness.",
     "p1": "We are On White, a video production company based in Seville with a 100 m² studio. We have spent years shooting for brands and agencies that cannot afford an \"almost\".",
     "p2": "Commercials, branded content, events, conferences and photography. With an advertising eye, not a home-video one.",
     "link": "Who we are →"
@@ -70,5 +72,14 @@
     "notFoundTitle": "This one really is blank.",
     "notFoundText": "The page you are looking for does not exist. Go back home or tell us about your project.",
     "backHome": "Back to home →"
+  },
+  "types": {
+    "evento": "Event",
+    "marca": "Commercial",
+    "institucional": "Corporate",
+    "foto": "Photography"
+  },
+  "marquee": {
+    "label": "Brands we have shot for"
   }
 }

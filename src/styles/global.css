@@ -56,7 +56,7 @@ input, textarea, select { font: inherit; color: inherit; border-radius: var(--ra
 .accent { color: var(--color-accent); }
 
 /* ---------- Layout ---------- */
-.wrap { padding-inline: var(--gutter); }
+.wrap { padding-inline: var(--gutter); max-width: var(--max-w); margin-inline: auto; }
 .grid-12 {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));

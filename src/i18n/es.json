@@ -17,17 +17,19 @@
     "switchLang": "English version",
     "switchLangShort": "EN",
     "currentLangShort": "ES",
-    "skip": "Saltar al contenido"
+    "skip": "Saltar al contenido",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
   },
   "hero": {
     "brand": "On White.",
-    "claim": "Lo único en blanco es el nombre.",
+    "claim": "Lo único en blanco\nes el nombre.",
     "sub": "Productora audiovisual para agencias de eventos y comunicación. Sevilla, Madrid y donde haga falta.",
     "services": "Spots · Contenido de marca · Eventos y congresos · Fotografía"
   },
   "showreel": {
     "rec": "REC · Showreel 2026 · 00:48",
-    "title": "Dale al play. Es lo que hay.",
+    "title": "Dale al play.\nEs lo que hay.",
     "play": "Reproducir showreel",
     "pending": "Showreel 2026 en producción. Mientras tanto, póster estático."
   },
@@ -38,7 +40,7 @@
   },
   "agencies": {
     "kicker": "Para agencias",
-    "title": "Tú vendes la idea. Nosotros la rodamos.",
+    "title": "Tú vendes la idea.\nNosotros la rodamos.",
     "p1t": "Brief 24 h",
     "p1": "Nos mandas el brief y en un día laborable tienes presupuesto cerrado, plan de rodaje y quién va.",
     "p2t": "Sin dobles tomas",
@@ -47,7 +49,7 @@
     "p3": "Same-day edit, aftermovie en 24-48 h, fotos el mismo día. El plazo lo marca tu campaña, no nuestra agenda."
   },
   "about": {
-    "title": "Sevilla. Plató propio. Cámaras propias. Cabezonería propia.",
+    "title": "Sevilla.\nPlató propio.\nCámaras propias.\nCabezonería propia.",
     "p1": "Somos On White, productora audiovisual con base en Sevilla y plató de 100 m². Llevamos años rodando para marcas y agencias que no pueden permitirse un \"casi\".",
     "p2": "Spots, contenido de marca, eventos, congresos y fotografía. Con criterio de publicidad, no de vídeo de comunión.",
     "link": "Quiénes somos →"
@@ -70,5 +72,14 @@
     "notFoundTitle": "Esto sí está en blanco.",
     "notFoundText": "La página que buscas no existe. Vuelve a la home o cuéntanos tu proyecto.",
     "backHome": "Volver a la home →"
+  },
+  "types": {
+    "evento": "Evento",
+    "marca": "Spot",
+    "institucional": "Institucional",
+    "foto": "Fotografía"
+  },
+  "marquee": {
+    "label": "Marcas para las que hemos rodado"
   }
 }
