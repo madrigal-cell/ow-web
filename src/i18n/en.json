@@ -81,5 +81,161 @@
   },
   "marquee": {
     "label": "Brands we have shot for"
+  },
+  "cta": {
+    "title": "Got an event or a campaign on your hands?",
+    "text": "Send us the brief. Within one working day you get a fixed quote, a shooting plan and the crew list."
+  },
+  "workPage": {
+    "kicker": "Work",
+    "title": "What we have shot.",
+    "lead": "Events, conferences, commercials, branded and corporate content for agencies and brands that cannot afford an \"almost\".",
+    "all": "All",
+    "empty": "No projects in this category yet.",
+    "count": "{n} projects"
+  },
+  "casePage": {
+    "client": "Client",
+    "agency": "Agency",
+    "year": "Year",
+    "duration": "Duration",
+    "type": "Type",
+    "deliverables": "Deliverables",
+    "videoPending": "Video pending selection",
+    "pending": "Case in preparation: copy, video and photos pending confirmation.",
+    "back": "← All work",
+    "next": "Next project",
+    "gallery": "Gallery"
+  },
+  "servicesPage": {
+    "kicker": "Services",
+    "title": "What we do.",
+    "lead": "Three lines of work, one crew and one standard: advertising's.",
+    "see": "See service →",
+    "includes": "What's included",
+    "how": "How we work",
+    "related": "Related work",
+    "s1t": "Brief and quote",
+    "s1": "Tell us what you need and within one working day you get a fixed quote, a shooting plan and an assigned crew.",
+    "s2t": "Pre-production",
+    "s2": "Technical meeting, locations, rider, running order and sign-off with you on every decision that affects the result.",
+    "s3t": "Shoot and delivery",
+    "s3": "In-house crew and technical redundancy on the day. Staggered deliveries on the deadline your campaign sets."
+  },
+  "agenciesPage": {
+    "kicker": "For agencies",
+    "lead": "We are the production company event and communication agencies bring to their projects. We do not compete with you: we produce what you have sold.",
+    "processTitle": "How we work with you",
+    "steps": [
+      {
+        "t": "Brief in 24 h",
+        "d": "Send us the brief. Within one working day you get a fixed quote, a shooting plan and the crew list."
+      },
+      {
+        "t": "Fixed quote",
+        "d": "No open items and no extras the day after. Travel, per diems and hours included."
+      },
+      {
+        "t": "Technical meeting",
+        "d": "We go through the running order, venue, lighting, sound and live needs with your production team."
+      },
+      {
+        "t": "Rider and shooting plan",
+        "d": "A document with camera positions, timings, crew and kit. You approve it."
+      },
+      {
+        "t": "Crew on the day",
+        "d": "The crew you met in the meeting is the crew that shows up. Redundancy in cameras, recording and sound."
+      },
+      {
+        "t": "Staggered delivery",
+        "d": "Social clips at the event, recap that night, aftermovie in 24-48 h and photos the same day."
+      }
+    ],
+    "needTitle": "What we need from you",
+    "need": [
+      "Brief with objective, audience and deliverables",
+      "Running order or event programme",
+      "Date, city and venue",
+      "Production contact on site",
+      "End client's brand guidelines"
+    ],
+    "faqTitle": "Frequently asked questions",
+    "briefTitle": "Quick brief",
+    "briefLead": "Tell us about the event or campaign. You get an answer within one working day."
+  },
+  "form": {
+    "name": "Name",
+    "company": "Agency or company",
+    "email": "Email",
+    "phone": "Phone",
+    "date": "Event or shoot date",
+    "city": "City",
+    "type": "Project type",
+    "typeOptions": [
+      "Corporate event",
+      "Conference",
+      "Commercial or campaign",
+      "Social content",
+      "Corporate film",
+      "Photography",
+      "Other"
+    ],
+    "deliverables": "Deliverables",
+    "deliverableOptions": [
+      "Aftermovie",
+      "Same-day edit",
+      "Live streaming",
+      "Photography",
+      "Commercial",
+      "Social pieces",
+      "Other"
+    ],
+    "deadline": "Delivery deadline",
+    "message": "Tell us more",
+    "send": "Send",
+    "sendBrief": "Send brief",
+    "consent": "I have read the privacy policy and agree that On White uses this data to reply to me.",
+    "required": "Required fields",
+    "pending": "Form submission is enabled in step 4.",
+    "selectPlaceholder": "Choose an option"
+  },
+  "aboutPage": {
+    "kicker": "About",
+    "geo": "On White is a video production company based in Seville, Spain, specialising in corporate events, conferences, commercials, branded content and corporate video. It works for event and communication agencies such as Nanook, Inusual, Santa Jarana, Marco de Comunicación and BeSpain, and for brands such as Xiaomi, JTI, Mastercard, Nissan and TCL. It has its own crew, a 100 m² studio and operates across Spain.",
+    "founders": "Founders",
+    "team": "Team",
+    "studioTitle": "Own 100 m² studio",
+    "studio": "Our own cyclorama, lighting and sound in Seville. For commercials, interviews, product and live sessions without depending on anyone.",
+    "gearTitle": "Kit",
+    "gear": [
+      "Digital cinema and multi-camera systems",
+      "Own lenses, lighting and sound",
+      "Multi-camera live production and streaming",
+      "Drone and stabilisers",
+      "In-house editing, colour and motion"
+    ],
+    "whereTitle": "Where we operate",
+    "where": "Based in Seville, regular crew in Madrid and travel across Spain and Portugal. Wherever you need us.",
+    "photoPending": "Photo pending",
+    "pending": "Team names, roles and photos pending confirmation."
+  },
+  "contactPage": {
+    "kicker": "Contact",
+    "title": "Tell us about your project.",
+    "lead": "We reply within 24 working hours. If it is urgent, call.",
+    "phone": "Phone",
+    "mobile": "Mobile",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Address",
+    "map": "Open in Google Maps →",
+    "social": "Social"
+  },
+  "legal": {
+    "legalTitle": "Legal notice",
+    "privacyTitle": "Privacy policy",
+    "cookiesTitle": "Cookie policy",
+    "pending": "Legal text pending drafting and validation. It will be published before launch."
   }
 }

@@ -1,0 +1,16 @@
+---
+/** Página interior: Base + Nav + <main> + Footer. Acepta las mismas props que Base. */
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+type BaseProps = Parameters<typeof Base>[0] extends infer P ? P : never;
+const props = Astro.props as Record<string, unknown>;
+---
+<Base {...props}>
+  <slot name="head" slot="head" />
+  <Nav />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+</Base>

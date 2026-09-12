@@ -1,0 +1,22 @@
+{
+  "es": [
+    { "q": "¿Trabajáis fuera de Sevilla?", "a": "Sí. Base en Sevilla, equipo habitual en Madrid y desplazamientos a toda España. El presupuesto incluye viajes y dietas cerrados, sin sorpresas." },
+    { "q": "¿Cuánto tardáis en dar presupuesto?", "a": "Un día laborable desde que recibimos el brief. Presupuesto cerrado, plan de rodaje y equipo asignado." },
+    { "q": "¿Podéis entregar el aftermovie al día siguiente?", "a": "Sí. Same-day edit para redes durante el evento y aftermovie en 24-48 h. El plazo se pacta en el brief y se cumple." },
+    { "q": "¿Hacéis streaming?", "a": "Sí: realización multicámara en directo, emisión a YouTube, Vimeo, LinkedIn o plataforma privada, y grabación limpia para la edición posterior." },
+    { "q": "¿Qué necesitáis de la agencia?", "a": "Brief, escaleta o programa, fecha y sede, contactos de producción y la guía de marca del cliente. El resto lo resolvemos nosotros." },
+    { "q": "¿Quién firma el trabajo?", "a": "Como acordemos. Habitualmente la agencia presenta el trabajo a su cliente y nosotros no aparecemos. Solo publicamos casos cuando el cliente final ya lo ha hecho y la agencia está de acuerdo." },
+    { "q": "¿Tenéis plató propio?", "a": "Sí, 100 m² en Sevilla con ciclorama, luz y sonido, para spots, entrevistas y producto." },
+    { "q": "¿Cómo se entrega el material?", "a": "Enlace de revisión en Vimeo con comentarios por minuto, y entrega final por transferencia en los formatos que pida el plan de medios." }
+  ],
+  "en": [
+    { "q": "Do you work outside Seville?", "a": "Yes. Based in Seville, with a regular crew in Madrid and travel across Spain. Travel and per diems are closed in the quote, no surprises." },
+    { "q": "How fast do you quote?", "a": "One working day from receiving the brief. Fixed quote, shooting plan and assigned crew." },
+    { "q": "Can you deliver the aftermovie the next day?", "a": "Yes. Same-day edit for social during the event and aftermovie in 24-48 h. The deadline is agreed in the brief and met." },
+    { "q": "Do you do live streaming?", "a": "Yes: multi-camera live production, streaming to YouTube, Vimeo, LinkedIn or a private platform, and a clean recording for the edit." },
+    { "q": "What do you need from the agency?", "a": "Brief, running order or programme, date and venue, production contacts and the client's brand guidelines. We handle the rest." },
+    { "q": "Who signs the work?", "a": "Whatever we agree. Usually the agency presents the work to its client and we stay out of sight. We only publish case studies once the end client has, and with the agency's agreement." },
+    { "q": "Do you have your own studio?", "a": "Yes, 100 m² in Seville with cyclorama, lighting and sound, for commercials, interviews and product." },
+    { "q": "How is the material delivered?", "a": "Vimeo review link with timecoded comments, then final delivery by transfer in the formats the media plan requires." }
+  ]
+}

@@ -81,5 +81,161 @@
   },
   "marquee": {
     "label": "Marcas para las que hemos rodado"
+  },
+  "cta": {
+    "title": "¿Tienes un evento o una campaña entre manos?",
+    "text": "Mándanos el brief. En un día laborable tienes presupuesto cerrado, plan de rodaje y quién va."
+  },
+  "workPage": {
+    "kicker": "Trabajos",
+    "title": "Lo que hemos rodado.",
+    "lead": "Eventos, congresos, spots, contenido de marca e institucional para agencias y marcas que no pueden permitirse un \"casi\".",
+    "all": "Todos",
+    "empty": "Todavía no hay casos en esta categoría.",
+    "count": "{n} casos"
+  },
+  "casePage": {
+    "client": "Cliente",
+    "agency": "Agencia",
+    "year": "Año",
+    "duration": "Duración",
+    "type": "Tipo",
+    "deliverables": "Entregables",
+    "videoPending": "Vídeo pendiente de seleccionar",
+    "pending": "Caso en preparación: textos, vídeo y fotos pendientes de confirmar.",
+    "back": "← Todos los trabajos",
+    "next": "Siguiente caso",
+    "gallery": "Galería"
+  },
+  "servicesPage": {
+    "kicker": "Servicios",
+    "title": "Qué hacemos.",
+    "lead": "Tres líneas de trabajo, un mismo equipo y el mismo criterio: el de la publicidad.",
+    "see": "Ver servicio →",
+    "includes": "Qué incluye",
+    "how": "Cómo trabajamos",
+    "related": "Trabajos relacionados",
+    "s1t": "Brief y presupuesto",
+    "s1": "Nos cuentas qué necesitas y en un día laborable tienes presupuesto cerrado, plan de rodaje y equipo asignado.",
+    "s2t": "Preproducción",
+    "s2": "Reunión técnica, localizaciones, rider, escaleta y validación contigo de cada decisión que afecte al resultado.",
+    "s3t": "Rodaje y entrega",
+    "s3": "Equipo propio y redundancia técnica el día D. Entregas escalonadas en el plazo que marca tu campaña."
+  },
+  "agenciesPage": {
+    "kicker": "Para agencias",
+    "lead": "Somos la productora que las agencias de eventos y comunicación llevan a sus proyectos. No competimos contigo: producimos lo que tú has vendido.",
+    "processTitle": "Así trabajamos contigo",
+    "steps": [
+      {
+        "t": "Brief en 24 h",
+        "d": "Nos mandas el brief. En un día laborable tienes presupuesto cerrado, plan de rodaje y quién va."
+      },
+      {
+        "t": "Presupuesto cerrado",
+        "d": "Sin partidas abiertas ni extras el día después. Viajes, dietas y horas incluidas."
+      },
+      {
+        "t": "Reunión técnica",
+        "d": "Repasamos escaleta, sede, luz, sonido y necesidades de directo con tu equipo de producción."
+      },
+      {
+        "t": "Rider y plan de rodaje",
+        "d": "Documento con posiciones de cámara, horarios, equipo humano y técnico. Tú lo apruebas."
+      },
+      {
+        "t": "Equipo el día D",
+        "d": "El equipo que conociste en la reunión es el que va. Redundancia en cámaras, grabación y sonido."
+      },
+      {
+        "t": "Entregas escalonadas",
+        "d": "Piezas para redes en el evento, resumen esa noche, aftermovie en 24-48 h y fotos el mismo día."
+      }
+    ],
+    "needTitle": "Qué necesitamos de ti",
+    "need": [
+      "Brief con objetivo, público y entregables",
+      "Escaleta o programa del evento",
+      "Fecha, ciudad y sede",
+      "Contacto de producción en sede",
+      "Guía de marca del cliente final"
+    ],
+    "faqTitle": "Preguntas frecuentes",
+    "briefTitle": "Brief rápido",
+    "briefLead": "Cuéntanos el evento o la campaña. En un día laborable tienes respuesta."
+  },
+  "form": {
+    "name": "Nombre",
+    "company": "Agencia o empresa",
+    "email": "Email",
+    "phone": "Teléfono",
+    "date": "Fecha del evento o rodaje",
+    "city": "Ciudad",
+    "type": "Tipo de proyecto",
+    "typeOptions": [
+      "Evento corporativo",
+      "Congreso",
+      "Spot o campaña",
+      "Contenido para redes",
+      "Vídeo institucional",
+      "Fotografía",
+      "Otro"
+    ],
+    "deliverables": "Entregables",
+    "deliverableOptions": [
+      "Aftermovie",
+      "Same-day edit",
+      "Streaming",
+      "Fotografía",
+      "Spot",
+      "Piezas para redes",
+      "Otro"
+    ],
+    "deadline": "Plazo de entrega",
+    "message": "Cuéntanos más",
+    "send": "Enviar",
+    "sendBrief": "Enviar brief",
+    "consent": "He leído la política de privacidad y acepto que On White use estos datos para responderme.",
+    "required": "Campos obligatorios",
+    "pending": "El envío del formulario se activa en el paso 4.",
+    "selectPlaceholder": "Elige una opción"
+  },
+  "aboutPage": {
+    "kicker": "Nosotros",
+    "geo": "On White es una productora audiovisual con sede en Sevilla especializada en eventos corporativos, congresos, spots, contenido de marca y vídeo institucional. Trabaja para agencias de eventos y comunicación como Nanook, Inusual, Santa Jarana, Marco de Comunicación y BeSpain, y para marcas como Xiaomi, JTI, Mastercard, Nissan o TCL. Cuenta con equipo propio, plató de 100 m² y opera en toda España.",
+    "founders": "Fundadores",
+    "team": "Equipo",
+    "studioTitle": "Plató propio de 100 m²",
+    "studio": "Ciclorama, luz y sonido propios en Sevilla. Para spots, entrevistas, producto y directos sin depender de nadie.",
+    "gearTitle": "Equipo técnico",
+    "gear": [
+      "Cámaras de cine digital y multicámara",
+      "Óptica, iluminación y sonido propios",
+      "Realización y streaming multicámara",
+      "Dron y estabilizadores",
+      "Edición, color y motion en casa"
+    ],
+    "whereTitle": "Dónde operamos",
+    "where": "Base en Sevilla, equipo habitual en Madrid y desplazamientos a toda España y Portugal. Donde haga falta.",
+    "photoPending": "Foto pendiente",
+    "pending": "Nombres, cargos y fotos del equipo pendientes de confirmar."
+  },
+  "contactPage": {
+    "kicker": "Contacto",
+    "title": "Cuéntanos tu proyecto.",
+    "lead": "Respondemos en 24 horas laborables. Si corre prisa, llama.",
+    "phone": "Teléfono",
+    "mobile": "Móvil",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Dirección",
+    "map": "Ver en Google Maps →",
+    "social": "Redes"
+  },
+  "legal": {
+    "legalTitle": "Aviso legal",
+    "privacyTitle": "Política de privacidad",
+    "cookiesTitle": "Política de cookies",
+    "pending": "Texto legal pendiente de redactar y validar. Se publicará antes del lanzamiento."
   }
 }

@@ -30,6 +30,12 @@ src/
   data/clientes.json    Marcas de la banda de logos.
   pages/                Una carpeta = una URL. pages/en/ replica la estructura en inglés.
   content/casos/        Un Markdown por caso e idioma (es/ y en/). Los marcados `pending: true` son de ejemplo.
+  content/servicios/    Un Markdown por servicio e idioma, unidos por `key`.
+  content/equipo/       Una persona por fichero, con el cargo en ES y EN.
+  content/testimonios/  Una cita por fichero, en ES y EN.
+  data/faq.json         Preguntas frecuentes de Para agencias (ES y EN).
+  layouts/Page.astro    Página interior: Nav + contenido + Footer.
+  components/pages/     Una plantilla por tipo de página; las rutas de pages/ solo la llaman.
 public/                 Ficheros que se copian tal cual (robots.txt, favicon, imágenes OG).
 docs/                   Briefing, benchmark, decisiones, handoff y mockups aprobados.
 ```
@@ -46,7 +52,7 @@ Las credenciales de IONOS van en `.env` (copiar de `.env.example`). `.env` nunca
 
 - [x] Paso 1 · Scaffold Astro, tokens de diseño, i18n ES/EN, sitemap, layout base con SEO.
 - [x] Paso 2 · Home fiel al mockup (desktop 1440 y móvil 390): Nav, Hero, Showreel, Marquee, CaseCard, PromiseRow, Footer.
-- [ ] Paso 3 · Colecciones de contenido y páginas de caso, servicio, equipo.
+- [x] Paso 3 · Colecciones (casos, servicios, equipo, testimonios) y páginas: Trabajos con filtro, ficha de caso, Servicios (índice + 3), Para agencias (proceso, FAQ, brief), Nosotros, Contacto y legales, en ES y EN. Datos de ejemplo marcados `pending`.
 - [ ] Paso 4 · SEO/GEO técnico, formulario PHP, `.htaccess` con 301.
 - [ ] Paso 5 · Script de deploy a IONOS y README de mantenimiento.
 - [ ] Paso 6 · Lighthouse móvil ≥ 90 en todas las páginas.

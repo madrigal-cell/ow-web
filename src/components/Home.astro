@@ -1,21 +1,15 @@
 ---
-/** Composición de la Home (compartida por / y /en/). */
-import Nav from './Nav.astro';
+/** Secciones de la Home (compartidas por / y /en/). Nav y Footer los pone el layout Page. */
 import Hero from './Hero.astro';
 import Showreel from './Showreel.astro';
 import Marquee from './Marquee.astro';
 import WorkGrid from './WorkGrid.astro';
 import Agencies from './Agencies.astro';
 import AboutStrip from './AboutStrip.astro';
-import Footer from './Footer.astro';
 ---
-<Nav />
-<main id="main">
-  <Hero />
-  <Showreel />
-  <Marquee />
-  <WorkGrid />
-  <Agencies />
-  <AboutStrip />
-</main>
-<Footer />
+<Hero />
+<Showreel />
+<Marquee />
+<WorkGrid />
+<Agencies />
+<AboutStrip />
