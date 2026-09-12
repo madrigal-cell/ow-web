@@ -42,7 +42,7 @@ docs/                   Briefing, benchmark, decisiones, handoff y mockups aprob
 
 ## Formularios, analítica y legales
 
-- Los formularios de Contacto y Para agencias envían por POST a `public/api/contacto.php` y `public/api/brief.php`, que se ejecutan en IONOS (PHP 8.0 o superior). El buzón de destino y el remitente se cambian en las constantes de `public/api/_mail.php`. Llevan honeypot y filtro de velocidad contra bots.
+- Los formularios de Contacto y Para agencias envían por POST a `public/api/contacto.php` y `public/api/brief.php`, que se ejecutan en IONOS (PHP 8.0 o superior). El buzón de destino se cambia en la constante `OW_TO` de `public/api/_mail.php`. El remitente técnico debe ser la dirección propia del webspace de IONOS (`sh-…@eu.hosting-webspace.io`): IONOS rechaza cualquier otro remitente porque el correo @owmakers.com está en Google. El correo del visitante va en "Responder a". Llevan honeypot y filtro de velocidad contra bots.
 - La analítica (GA4) solo se activa si `PUBLIC_GA4_ID` tiene valor en `.env` al compilar. Sin valor no hay aviso de cookies ni cookies.
 - Los textos legales viven en `src/content/legal/` (ES y EN). Mientras tengan `draft: true` se muestran con aviso de borrador y no se indexan; al validarlos, poner `draft: false`.
 

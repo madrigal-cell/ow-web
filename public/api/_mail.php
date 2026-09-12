@@ -7,7 +7,8 @@
 declare(strict_types=1);
 
 const OW_TO      = 'produccion@owmakers.com';   // buzón que recibe los formularios
-const OW_FROM    = 'web@owmakers.com';          // remitente técnico (dominio propio, exigido por IONOS)
+const OW_FROM    = 'sh-585926058@eu.hosting-webspace.io'; // remitente técnico: la única dirección que IONOS acepta desde este webspace
+                                                          // (el correo @owmakers.com vive en Google, no en IONOS). Reply-To lleva el email del visitante.
 const OW_SITE    = 'https://owmakers.com';
 const OW_THANKS  = ['es' => '/gracias/', 'en' => '/en/thanks/'];
 const OW_MIN_SECONDS = 3;                        // un humano tarda más de 3 s en rellenar el formulario
@@ -69,6 +70,6 @@ function ow_send(string $subject, array $rows, string $replyTo, string $lang, st
         'X-Mailer: owmakers.com',
     ];
     $encoded = '=?UTF-8?B?' . base64_encode($subject) . '?=';
-    $ok = mail(OW_TO, $encoded, $body, implode("\r\n", $headers), '-f ' . OW_FROM);
+    $ok = mail(OW_TO, $encoded, $body, implode("\r\n", $headers));
     ow_respond($ok, $lang, $formId, $ok ? '' : 'mail');
 }
