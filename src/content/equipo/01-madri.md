@@ -1,9 +1,9 @@
 ---
-name: "Madri"
+name: "José Manuel Madrigal"
+nick: "Madri"
 role:
-  es: "Fundador · Dirección y producción"
-  en: "Founder · Direction and production"
+  es: "CEO y productor ejecutivo · Dirección comercial"
+  en: "CEO & Executive Producer · Head of Sales"
 founder: true
 order: 1
-pending: true
 ---
