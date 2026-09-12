@@ -10,7 +10,8 @@
   --color-ink: #0b0b0b;           /* tinta / negro */
   --color-accent: #ff4d00;        /* naranja eléctrico, único acento */
   --color-muted: #4b4b46;         /* texto secundario sobre claro */
-  --color-label: #7a7a72;         /* etiquetas sobre claro */
+  --color-label: #66665f;         /* etiquetas y texto pequeño sobre claro (contraste 5.2:1, AA) */
+  --color-accent-ink: #c04700;     /* naranja para TEXTO PEQUEÑO sobre claro (AA); el acento puro solo en titulares grandes y fondos */
   --color-placeholder: #d9d9d2;   /* huecos de imagen / gris claro */
   --color-line-dark: #3a3a36;     /* líneas sobre negro */
   --color-text-dark: #c9c9c2;     /* texto secundario sobre negro */

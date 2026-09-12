@@ -24,13 +24,13 @@ const isCurrent = (href: string) => (current === href || (href !== '/' && href !
     <nav class="nav__desktop label" aria-label={d.nav.menu}>
       {links.map((l) => <a href={l.href} aria-current={isCurrent(l.href)}>{l.label}</a>)}
       <a class="btn btn--sm" href={path('contact', locale)}>{d.nav.cta}</a>
-      <a class="nav__lang" href={altHref} hreflang={other} lang={other} aria-label={d.nav.switchLang}>
+      <a class="nav__lang" href={altHref} hreflang={other} lang={other} aria-label={`${locale.toUpperCase()} / ${other.toUpperCase()} · ${d.nav.switchLang}`}>
         <span class="nav__lang-on">{locale.toUpperCase()}</span> / <span>{other.toUpperCase()}</span>
       </a>
     </nav>
 
     <div class="nav__mobile">
-      <a class="label nav__lang" href={altHref} hreflang={other} lang={other} aria-label={d.nav.switchLang}>
+      <a class="label nav__lang" href={altHref} hreflang={other} lang={other} aria-label={`${locale.toUpperCase()} / ${other.toUpperCase()} · ${d.nav.switchLang}`}>
         <span class="nav__lang-on">{locale.toUpperCase()}</span> / <span>{other.toUpperCase()}</span>
       </a>
       <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label={d.nav.openMenu} data-open={d.nav.openMenu} data-close={d.nav.closeMenu}>

@@ -11,8 +11,11 @@ interface Props {
   size?: 'lg' | 'md' | 'sm';
   cover?: ImageMetadata;
   coverAlt?: string;
+  /** Nivel del título según el contexto (h2 en listados bajo un h1, h3 bajo un h2). */
+  as?: 'h2' | 'h3';
 }
-const { href, title, meta, lead, tone = 'ink', size = 'md', cover, coverAlt = '' } = Astro.props;
+const { href, title, meta, lead, tone = 'ink', size = 'md', cover, coverAlt = '', as = 'h3' } = Astro.props;
+const Heading = as;
 ---
 <article class:list={['card', `card--${size}`]}>
   <a class="card__link" href={href}>
@@ -20,7 +23,7 @@ const { href, title, meta, lead, tone = 'ink', size = 'md', cover, coverAlt = ''
       {cover && <Image src={cover} alt={coverAlt} widths={[480, 800, 1200]} sizes="(min-width: 900px) 60vw, 100vw" loading="lazy" />}
       {meta && <span class="label card__meta">{meta}</span>}
     </div>
-    <h3 class="display card__title">{title}</h3>
+    <Heading class="display card__title">{title}</Heading>
     {lead && <p class="card__lead muted">{lead}</p>}
   </a>
 </article>

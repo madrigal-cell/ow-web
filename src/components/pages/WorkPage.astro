@@ -26,7 +26,7 @@ const title = `${d.workPage.kicker} · ${d.meta.siteName}`;
   <div class="work-grid wrap grid-12" id="work-grid">
     {cases.map((c) => (
       <div class="work-grid__item" data-type={c.data.type}>
-        <CaseCard href={casePath(c.data.slug, locale)} title={c.data.title} meta={meta(c)} lead={c.data.lead} tone={c.data.coverTone} size="md" cover={c.data.cover} coverAlt={c.data.coverAlt} />
+        <CaseCard href={casePath(c.data.slug, locale)} title={c.data.title} meta={meta(c)} lead={c.data.lead} tone={c.data.coverTone} size="md" cover={c.data.cover} coverAlt={c.data.coverAlt} as="h2" />
       </div>
     ))}
   </div>
