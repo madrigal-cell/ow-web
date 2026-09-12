@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "siteName": "On White",
+    "legalName": "On White Makers, S.L.",
+    "defaultTitle": "On White · Video production company in Seville for event and communication agencies",
+    "defaultDescription": "On White is a video production company based in Seville, Spain, specialising in commercials, branded content, corporate events, conferences and photography for event and communication agencies. Seville, Madrid and wherever you need us."
+  },
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "agencies": "For agencies",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Tell us about your project",
+    "menu": "Menu",
+    "close": "Close",
+    "switchLang": "Versión en español",
+    "switchLangShort": "ES",
+    "currentLangShort": "EN",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "brand": "On White.",
+    "claim": "Black, white and everything in colour.",
+    "sub": "Video production for event and communication agencies. Seville, Madrid and wherever you need us.",
+    "services": "Commercials · Branded content · Events & conferences · Photography"
+  },
+  "showreel": {
+    "rec": "REC · Showreel 2026 · 00:48",
+    "title": "Press play. That's the pitch.",
+    "play": "Play showreel",
+    "pending": "Showreel 2026 in production. Static poster for now."
+  },
+  "work": {
+    "title": "Work",
+    "seeAll": "See all {n} projects →",
+    "seeAllShort": "All {n} →"
+  },
+  "agencies": {
+    "kicker": "For agencies",
+    "title": "You sell the idea. We shoot it.",
+    "p1t": "Brief in 24 h",
+    "p1": "Send us the brief and within one working day you get a fixed quote, a shooting plan and the crew list.",
+    "p2t": "No second takes",
+    "p2": "Real pre-production, in-house crew and technical redundancy. What we shoot, we deliver.",
+    "p3t": "Fast delivery",
+    "p3": "Same-day edit, aftermovie in 24-48 h, photos the same day. Your campaign sets the deadline, not our calendar."
+  },
+  "about": {
+    "title": "Seville. Own studio. Own cameras. Own stubbornness.",
+    "p1": "We are On White, a video production company based in Seville with a 100 m² studio. We have spent years shooting for brands and agencies that cannot afford an \"almost\".",
+    "p2": "Commercials, branded content, events, conferences and photography. With an advertising eye, not a home-video one.",
+    "link": "Who we are →"
+  },
+  "footer": {
+    "play": "Press play.",
+    "email": "hola@owmakers.com",
+    "phone": "+34 955 295 612",
+    "phoneHref": "+34955295612",
+    "mobile": "+34 678 641 862",
+    "mobileHref": "+34678641862",
+    "address": "Calle Barrena 5, 41008 Seville, Spain",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "cookies": "Cookies"
+  },
+  "common": {
+    "cta": "Tell us about your project",
+    "pending": "Pending",
+    "notFoundTitle": "This one really is blank.",
+    "notFoundText": "The page you are looking for does not exist. Go back home or tell us about your project.",
+    "backHome": "Back to home →"
+  }
+}

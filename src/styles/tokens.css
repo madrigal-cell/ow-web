@@ -1,0 +1,63 @@
+/* ============================================================
+   On White — tokens de diseño
+   Fuente: docs/04-handoff-claude-code.md §3 (identidad visual decidida)
+   Dirección: brutalista gamberro. Blanco roto, negro, un solo acento.
+   Cambiar aquí un valor cambia toda la web.
+   ============================================================ */
+:root {
+  /* Color */
+  --color-bg: #f4f4f1;            /* fondo blanco roto */
+  --color-ink: #0b0b0b;           /* tinta / negro */
+  --color-accent: #ff4d00;        /* naranja eléctrico, único acento */
+  --color-muted: #4b4b46;         /* texto secundario sobre claro */
+  --color-label: #7a7a72;         /* etiquetas sobre claro */
+  --color-placeholder: #d9d9d2;   /* huecos de imagen / gris claro */
+  --color-line-dark: #3a3a36;     /* líneas sobre negro */
+  --color-text-dark: #c9c9c2;     /* texto secundario sobre negro */
+  --color-muted-dark: #9a9a92;    /* notas sobre negro */
+  --color-stripe-dark: #161616;   /* rayado del showreel */
+
+  /* Tipografía (las variables --font-display y --font-text las inyecta Astro Fonts) */
+  --font-display: Anton, Impact, 'Arial Narrow Bold', sans-serif;
+  --font-text: Archivo, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Escala de titulares (mockup: 232 / 120 / 96 / 88 / 64 / 56 / 44 / 36 / 32 en 1440;
+     92 / 64 / 52 / 46 / 40 / 38 / 30 / 28 / 20 en 390) */
+  --fs-hero: clamp(5.75rem, 1.5rem + 15.5vw, 14.5rem);      /* 92 → 232 */
+  --fs-section: clamp(4rem, 2rem + 6vw, 7.5rem);            /* 64 → 120 */
+  --fs-claim: clamp(2.875rem, 1.5rem + 5vw, 6rem);          /* 46 → 96 */
+  --fs-block: clamp(3.25rem, 2rem + 3.5vw, 5.5rem);         /* 52 → 88 */
+  --fs-h2: clamp(2.5rem, 1.75rem + 2.3vw, 4rem);            /* 40 → 64 */
+  --fs-h3: clamp(2.375rem, 2rem + 1.2vw, 3.5rem);           /* 38 → 56 */
+  --fs-card: clamp(1.875rem, 1.5rem + 1vw, 2.75rem);        /* 30 → 44 */
+  --fs-row: clamp(1.75rem, 1.5rem + 0.6vw, 2.25rem);        /* 28 → 36 */
+  --fs-card-sm: clamp(1.25rem, 1rem + 0.8vw, 2rem);         /* 20 → 32 */
+  --fs-marquee: clamp(1.5rem, 1.2rem + 1.2vw, 2.5rem);      /* 24 → 40 */
+
+  /* Texto */
+  --fs-lead: clamp(1rem, 0.9rem + 0.35vw, 1.25rem);         /* 16 → 20 */
+  --fs-body: clamp(0.9375rem, 0.9rem + 0.15vw, 1.0625rem);  /* 15 → 17 */
+  --fs-small: 0.875rem;                                     /* 14 */
+  --fs-label: 0.75rem;                                      /* 12 (11 en móvil vía media query) */
+
+  /* Espaciado y rejilla */
+  --gutter: clamp(1.25rem, 0.5rem + 2.5vw, 3rem);           /* 20 → 48 */
+  --gap: clamp(0.875rem, 0.5rem + 1vw, 1.5rem);             /* 14 → 24 */
+  --section-y: clamp(2.75rem, 1.5rem + 4vw, 4.5rem);        /* 44 → 72 */
+  --section-y-lg: clamp(3.5rem, 2rem + 5vw, 6rem);          /* 56 → 96 */
+  --max-w: 1440px;
+
+  /* Trazos */
+  --line: 3px;          /* líneas gruesas de sección */
+  --line-thin: 2px;     /* líneas de lista sobre negro */
+  --radius: 0;          /* sin radios: bordes rectos siempre */
+
+  /* Movimiento */
+  --dur: 220ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --marquee-dur: 28s;
+}
+
+@media (max-width: 767px) {
+  :root { --fs-label: 0.6875rem; }
+}

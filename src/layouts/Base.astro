@@ -1,0 +1,91 @@
+---
+/**
+ * Layout base de toda la web.
+ * Se encarga de: <html lang>, metadatos SEO (title, description, canonical, hreflang, OG/Twitter),
+ * fuentes autoalojadas, estilos globales y enlace "saltar al contenido".
+ * Las páginas añaden JSON-LD u otros <head> extra con <Fragment slot="head">.
+ */
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import { resolveLocale, htmlLang, alternatePath, dict, type Locale } from '../i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Imagen OG absoluta o relativa a /. Por defecto /og-default.jpg */
+  ogImage?: string;
+  /** Tipo OG: website (por defecto) o article. */
+  ogType?: 'website' | 'article';
+  /** Evita indexación (páginas legales, 404, gracias). */
+  noindex?: boolean;
+  /** Ruta equivalente en el otro idioma; si no se pasa, se deduce del mapa de rutas. */
+  alternate?: string;
+  /** Clase extra para <body>. */
+  bodyClass?: string;
+}
+
+const locale: Locale = resolveLocale(Astro.currentLocale);
+const other: Locale = locale === 'es' ? 'en' : 'es';
+const d = dict(locale);
+
+const {
+  title = d.meta.defaultTitle,
+  description = d.meta.defaultDescription,
+  ogImage = '/og-default.jpg',
+  ogType = 'website',
+  noindex = false,
+  alternate,
+  bodyClass = '',
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://owmakers.com');
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, site).href;
+const alternateHref = new URL(alternate ?? alternatePath(pathname, locale, other), site).href;
+const esHref = locale === 'es' ? canonical : alternateHref;
+const enHref = locale === 'en' ? canonical : alternateHref;
+const ogImageAbs = new URL(ogImage, site).href;
+---
+
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="alternate" hreflang="es-ES" href={esHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={esHref} />
+
+    <meta property="og:site_name" content={d.meta.siteName} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_ES' : 'en_GB'} />
+    <meta property="og:locale:alternate" content={locale === 'es' ? 'en_GB' : 'es_ES'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <meta name="theme-color" content="#f4f4f1" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <Font cssVariable="--font-display" preload={[{ subset: "latin" }]} />
+    <Font cssVariable="--font-text" preload={[{ subset: "latin", weight: 400 }, { subset: "latin", weight: 700 }]} />
+
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link label" href="#main">{d.nav.skip}</a>
+    <slot />
+  </body>
+</html>

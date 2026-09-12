@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { dict, path } from '../i18n';
+const d = dict('es');
+---
+<Base title={`404 · ${d.meta.siteName}`} noindex alternate="/en/">
+  <main id="main" class="wrap nf">
+    <h1 class="display" style="font-size: var(--fs-section)">{d.common.notFoundTitle}</h1>
+    <p class="lead">{d.common.notFoundText}</p>
+    <a class="label link-rule" href={path('home', 'es')}>{d.common.backHome}</a>
+  </main>
+</Base>
+<style>
+  .nf { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; align-items: flex-start; }
+</style>
