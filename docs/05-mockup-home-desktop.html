@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;700&display=swap">
+  <style>
+    body { margin: 0; background: #f4f4f1; color: #0b0b0b; font-family: Archivo, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #0b0b0b; } a:hover { color: #0b0b0b; }
+    .display { font-family: Anton, Impact, "Arial Narrow Bold", sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em; }
+    .label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { display: flex; gap: 64px; width: max-content; animation: marquee 28s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 900px; background: #f4f4f1; display: flex; flex-direction: column;">
+
+  <!-- NAV -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; border-bottom: 3px solid #0b0b0b;">
+    <div class="display" style="font-size: 28px; line-height: 1;">On White</div>
+    <div style="display: flex; gap: 36px; align-items: center;" class="label">
+      <a href="#" style="text-decoration: none;">Trabajos</a>
+      <a href="#" style="text-decoration: none;">Servicios</a>
+      <a href="#" style="text-decoration: none;">Para agencias</a>
+      <a href="#" style="text-decoration: none;">Nosotros</a>
+      <a href="#" style="text-decoration: none; background: #0b0b0b; color: #f4f4f1; padding: 14px 20px;">Cuéntanos tu proyecto</a>
+      <span style="color: #7a7a72;">ES / EN</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 56px 48px 40px 48px; align-items: end;">
+    <div style="grid-column: 1 / span 9;">
+      <div class="display" style="font-size: 232px; line-height: 0.86; color: #0b0b0b;">On White.</div>
+      <div class="display" style="font-size: 96px; line-height: 0.92; margin-top: 24px; color: {{accent}};">Lo único en blanco<br>es el nombre.</div>
+    </div>
+    <div style="grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 20px; padding-bottom: 12px;">
+      <p style="margin: 0; font-size: 20px; line-height: 1.35; font-weight: 500;">Productora audiovisual para agencias de eventos y comunicación. Sevilla, Madrid y donde haga falta.</p>
+      <div class="label" style="color: #7a7a72;">Spots · Contenido de marca · Eventos y congresos · Fotografía</div>
+    </div>
+  </div>
+
+  <!-- SHOWREEL -->
+  <div style="margin: 0 48px; position: relative; height: 620px; background: #0b0b0b; display: flex; align-items: flex-end; justify-content: space-between; padding: 32px; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, #0b0b0b 0 40px, #161616 40px 80px);"></div>
+    <div style="position: absolute; left: 32px; top: 32px; display: flex; gap: 12px; align-items: center;" class="label">
+      <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: {{accent}};"></span>
+      <span style="color: #f4f4f1;">REC · Showreel 2026 · 00:48</span>
+    </div>
+    <div style="position: relative; display: flex; align-items: center; gap: 24px;">
+      <div style="width: 120px; height: 120px; background: {{accent}}; display: flex; align-items: center; justify-content: center;">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5v15l12-7.5-12-7.5z" fill="#0b0b0b"></path></svg>
+      </div>
+      <div class="display" style="font-size: 64px; line-height: 0.95; color: #f4f4f1;">Dale al play.<br>Es lo que hay.</div>
+    </div>
+    <div style="position: relative; color: #9a9a92; font-size: 14px; max-width: 320px; line-height: 1.4;">[AQUÍ VA EL SHOWREEL NUEVO · vídeo en autoplay silencioso, póster estático en móvil]</div>
+  </div>
+
+  <!-- LOGOS MARQUEE -->
+  <div style="margin-top: 40px; border-top: 3px solid #0b0b0b; border-bottom: 3px solid #0b0b0b; padding: 20px 0; overflow: hidden;">
+    <div class="marquee-track display" style="font-size: 40px; line-height: 1; color: #0b0b0b;">
+      <span>Xiaomi</span><span>JTI</span><span>Mastercard</span><span>Nissan</span><span>TCL</span><span>LG</span><span>Emasesa</span><span>Cruz Roja</span><span>IDAE</span><span>Iturri</span><span>Consum</span><span>JRC</span>
+      <span>Xiaomi</span><span>JTI</span><span>Mastercard</span><span>Nissan</span><span>TCL</span><span>LG</span><span>Emasesa</span><span>Cruz Roja</span><span>IDAE</span><span>Iturri</span><span>Consum</span><span>JRC</span>
+    </div>
+  </div>
+
+  <!-- TRABAJOS -->
+  <div style="padding: 72px 48px 24px 48px; display: flex; justify-content: space-between; align-items: end;">
+    <div class="display" style="font-size: 120px; line-height: 0.9;">Trabajos</div>
+    <a href="#" class="label" style="text-decoration: none; border-bottom: 3px solid #0b0b0b; padding-bottom: 6px;">Ver los 12 casos →</a>
+  </div>
+  <div style="padding: 0 48px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px;">
+    <div style="grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 14px;">
+      <div style="height: 460px; background: {{accent}}; display: flex; align-items: flex-end; padding: 24px;"><span class="label" style="color: #0b0b0b;">Spot · 02:06</span></div>
+      <div class="display" style="font-size: 44px; line-height: 1;">Xiaomi · Captura la grandeza</div>
+      <div style="font-size: 16px; color: #4b4b46;">Campaña de producto. Rodaje en plató propio y exteriores, 3 piezas + cutdowns para redes.</div>
+    </div>
+    <div style="grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 14px;">
+      <div style="height: 300px; background: #0b0b0b; display: flex; align-items: flex-end; padding: 24px;"><span class="label" style="color: #f4f4f1;">Evento · 03:49</span></div>
+      <div class="display" style="font-size: 44px; line-height: 1;">JTI · Annual Convention</div>
+      <div style="font-size: 16px; color: #4b4b46;">Convención anual: cobertura multicámara, aftermovie en 24 h y fotografía.</div>
+    </div>
+    <div style="grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 14px; margin-top: 24px;">
+      <div style="height: 240px; background: #0b0b0b;"></div>
+      <div class="display" style="font-size: 32px; line-height: 1;">Mastercard · Premios FRACE</div>
+    </div>
+    <div style="grid-column: 5 / span 4; display: flex; flex-direction: column; gap: 14px; margin-top: 24px;">
+      <div style="height: 240px; background: #d9d9d2;"></div>
+      <div class="display" style="font-size: 32px; line-height: 1;">Cruz Roja · Te acompaña</div>
+    </div>
+    <div style="grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 14px; margin-top: 24px;">
+      <div style="height: 240px; background: {{accent}};"></div>
+      <div class="display" style="font-size: 32px; line-height: 1;">Emasesa · Resiliencia hídrica</div>
+    </div>
+  </div>
+
+  <!-- PARA AGENCIAS -->
+  <div style="margin: 96px 0 0 0; background: #0b0b0b; color: #f4f4f1; padding: 72px 48px 80px 48px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px;">
+    <div style="grid-column: 1 / span 5;">
+      <div class="label" style="color: {{accent}};">Para agencias</div>
+      <div class="display" style="font-size: 88px; line-height: 0.9; margin-top: 16px;">Tú vendes la idea.<br>Nosotros la rodamos.</div>
+    </div>
+    <div style="grid-column: 7 / span 6; display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0;">
+      <div style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 24px 0; border-top: 2px solid #3a3a36;">
+        <div class="display" style="font-size: 36px; line-height: 1;">Brief 24 h</div>
+        <div style="font-size: 17px; line-height: 1.45; color: #c9c9c2;">Nos mandas el brief y en un día laborable tienes presupuesto cerrado, plan de rodaje y quién va.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 24px 0; border-top: 2px solid #3a3a36;">
+        <div class="display" style="font-size: 36px; line-height: 1;">Sin dobles tomas</div>
+        <div style="font-size: 17px; line-height: 1.45; color: #c9c9c2;">Preproducción de verdad, equipo propio y redundancia técnica. Lo que se rueda, sale.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 24px 0; border-top: 2px solid #3a3a36; border-bottom: 2px solid #3a3a36;">
+        <div class="display" style="font-size: 36px; line-height: 1;">Entrega rápida</div>
+        <div style="font-size: 17px; line-height: 1.45; color: #c9c9c2;">Same-day edit, aftermovie en 24-48 h, fotos el mismo día. El plazo lo marca tu campaña, no nuestra agenda.</div>
+      </div>
+      <div style="margin-top: 32px;">
+        <a href="#" class="label" style="text-decoration: none; display: inline-block; background: {{accent}}; color: #0b0b0b; padding: 20px 28px;">Cuéntanos tu proyecto</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOSOTROS STRIP -->
+  <div style="padding: 72px 48px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: start;">
+    <div style="grid-column: 1 / span 4;" class="display">
+      <div style="font-size: 56px; line-height: 0.95;">Sevilla.<br>Plató propio.<br>Cámaras propias.<br>Cabezonería propia.</div>
+    </div>
+    <div style="grid-column: 6 / span 6; font-size: 20px; line-height: 1.45; display: flex; flex-direction: column; gap: 16px;">
+      <p style="margin: 0;">Somos On White Makers, productora audiovisual con base en Sevilla y plató de 100 m². Llevamos años rodando para marcas y agencias que no pueden permitirse un "casi".</p>
+      <p style="margin: 0;">Spots, contenido de marca, eventos, congresos y fotografía. Con criterio de publicidad, no de vídeo de comunión.</p>
+      <a href="#" class="label" style="text-decoration: none; border-bottom: 3px solid #0b0b0b; padding-bottom: 6px; align-self: flex-start;">Quiénes somos →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top: 3px solid #0b0b0b; padding: 32px 48px 40px 48px; display: flex; justify-content: space-between; align-items: end;">
+    <div class="display" style="font-size: 120px; line-height: 0.85; color: {{accent}};">Dale al play.</div>
+    <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #4b4b46; text-align: right;">
+      <span>hola@owmakers.com · 955 295 612</span>
+      <span>Calle Barrena 5, 41008 Sevilla</span>
+      <span>LinkedIn · Instagram · Vimeo</span>
+      <span style="margin-top: 10px;">On White Makers, S.L. · Aviso legal · Privacidad · Cookies</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#ff4d00","options":["#ff4d00","#ff2d8a","#c6ff00","#1f35ff"],"section":"Marca"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#ff4d00' };
+  }
+}
+</script>
+</body>
+</html>

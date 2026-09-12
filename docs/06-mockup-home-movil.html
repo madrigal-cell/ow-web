@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;700&display=swap">
+  <style>
+    body { margin: 0; background: #f4f4f1; color: #0b0b0b; font-family: Archivo, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #0b0b0b; } a:hover { color: #0b0b0b; }
+    .display { font-family: Anton, Impact, "Arial Narrow Bold", sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  </style>
+</helmet>
+
+<div style="width: 390px; background: #f4f4f1; display: flex; flex-direction: column;">
+
+  <!-- NAV -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 3px solid #0b0b0b;">
+    <div class="display" style="font-size: 22px; line-height: 1;">On White</div>
+    <div style="display: flex; gap: 14px; align-items: center;">
+      <span class="label" style="color: #7a7a72;">ES / EN</span>
+      <div style="width: 44px; height: 44px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px;">
+        <span style="display: block; width: 28px; height: 3px; background: #0b0b0b;"></span>
+        <span style="display: block; width: 20px; height: 3px; background: #0b0b0b;"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="padding: 32px 20px 24px 20px; display: flex; flex-direction: column; gap: 18px;">
+    <div class="display" style="font-size: 92px; line-height: 0.86;">On White.</div>
+    <div class="display" style="font-size: 46px; line-height: 0.92; color: {{accent}};">Lo único en blanco es el nombre.</div>
+    <p style="margin: 6px 0 0 0; font-size: 16px; line-height: 1.4; font-weight: 500;">Productora audiovisual para agencias de eventos y comunicación. Sevilla, Madrid y donde haga falta.</p>
+  </div>
+
+  <!-- SHOWREEL (póster estático en móvil) -->
+  <div style="margin: 0 20px; height: 420px; background: #0b0b0b; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, #0b0b0b 0 28px, #161616 28px 56px);"></div>
+    <div style="position: relative; display: flex; gap: 10px; align-items: center;" class="label">
+      <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: {{accent}};"></span>
+      <span style="color: #f4f4f1;">REC · Showreel 2026 · 00:48</span>
+    </div>
+    <div style="position: relative; display: flex; flex-direction: column; gap: 16px;">
+      <div style="width: 72px; height: 72px; background: {{accent}}; display: flex; align-items: center; justify-content: center;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5v15l12-7.5-12-7.5z" fill="#0b0b0b"></path></svg>
+      </div>
+      <div class="display" style="font-size: 40px; line-height: 0.95; color: #f4f4f1;">Dale al play.<br>Es lo que hay.</div>
+    </div>
+  </div>
+
+  <!-- LOGOS -->
+  <div style="margin-top: 28px; border-top: 3px solid #0b0b0b; border-bottom: 3px solid #0b0b0b; padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 10px 22px;" class="display">
+    <span style="font-size: 24px;">Xiaomi</span><span style="font-size: 24px;">JTI</span><span style="font-size: 24px;">Mastercard</span><span style="font-size: 24px;">Nissan</span><span style="font-size: 24px;">TCL</span><span style="font-size: 24px;">LG</span><span style="font-size: 24px;">Emasesa</span><span style="font-size: 24px;">Cruz Roja</span><span style="font-size: 24px;">IDAE</span>
+  </div>
+
+  <!-- TRABAJOS -->
+  <div style="padding: 44px 20px 16px 20px; display: flex; justify-content: space-between; align-items: end;">
+    <div class="display" style="font-size: 64px; line-height: 0.9;">Trabajos</div>
+    <a href="#" class="label" style="text-decoration: none; border-bottom: 3px solid #0b0b0b; padding-bottom: 4px;">Los 12 →</a>
+  </div>
+  <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="height: 220px; background: {{accent}}; display: flex; align-items: flex-end; padding: 16px;"><span class="label">Spot · 02:06</span></div>
+      <div class="display" style="font-size: 30px; line-height: 1;">Xiaomi · Captura la grandeza</div>
+      <div style="font-size: 15px; color: #4b4b46; line-height: 1.4;">Campaña de producto. Plató propio y exteriores, 3 piezas + cutdowns.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div style="height: 220px; background: #0b0b0b; display: flex; align-items: flex-end; padding: 16px;"><span class="label" style="color: #f4f4f1;">Evento · 03:49</span></div>
+      <div class="display" style="font-size: 30px; line-height: 1;">JTI · Annual Convention</div>
+      <div style="font-size: 15px; color: #4b4b46; line-height: 1.4;">Cobertura multicámara, aftermovie en 24 h y fotografía.</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="height: 120px; background: #0b0b0b;"></div>
+        <div class="display" style="font-size: 20px; line-height: 1;">Mastercard · FRACE</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="height: 120px; background: #d9d9d2;"></div>
+        <div class="display" style="font-size: 20px; line-height: 1;">Cruz Roja</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARA AGENCIAS -->
+  <div style="margin-top: 56px; background: #0b0b0b; color: #f4f4f1; padding: 44px 20px 48px 20px; display: flex; flex-direction: column; gap: 20px;">
+    <div class="label" style="color: {{accent}};">Para agencias</div>
+    <div class="display" style="font-size: 52px; line-height: 0.9;">Tú vendes la idea. Nosotros la rodamos.</div>
+    <div style="display: flex; flex-direction: column; gap: 0; margin-top: 8px;">
+      <div style="padding: 18px 0; border-top: 2px solid #3a3a36; display: flex; flex-direction: column; gap: 6px;">
+        <div class="display" style="font-size: 28px; line-height: 1;">Brief 24 h</div>
+        <div style="font-size: 15px; line-height: 1.45; color: #c9c9c2;">Presupuesto cerrado, plan de rodaje y quién va, en un día laborable.</div>
+      </div>
+      <div style="padding: 18px 0; border-top: 2px solid #3a3a36; display: flex; flex-direction: column; gap: 6px;">
+        <div class="display" style="font-size: 28px; line-height: 1;">Sin dobles tomas</div>
+        <div style="font-size: 15px; line-height: 1.45; color: #c9c9c2;">Preproducción de verdad, equipo propio, redundancia técnica.</div>
+      </div>
+      <div style="padding: 18px 0; border-top: 2px solid #3a3a36; border-bottom: 2px solid #3a3a36; display: flex; flex-direction: column; gap: 6px;">
+        <div class="display" style="font-size: 28px; line-height: 1;">Entrega rápida</div>
+        <div style="font-size: 15px; line-height: 1.45; color: #c9c9c2;">Same-day edit, aftermovie en 24-48 h, fotos el mismo día.</div>
+      </div>
+    </div>
+    <a href="#" class="label" style="text-decoration: none; display: flex; justify-content: center; align-items: center; background: {{accent}}; color: #0b0b0b; height: 56px; margin-top: 8px;">Cuéntanos tu proyecto</a>
+  </div>
+
+  <!-- NOSOTROS -->
+  <div style="padding: 44px 20px; display: flex; flex-direction: column; gap: 18px;">
+    <div class="display" style="font-size: 38px; line-height: 0.95;">Sevilla. Plató propio. Cámaras propias. Cabezonería propia.</div>
+    <p style="margin: 0; font-size: 16px; line-height: 1.45;">Productora audiovisual con base en Sevilla y plató de 100 m². Spots, contenido de marca, eventos y fotografía, con criterio de publicidad.</p>
+    <a href="#" class="label" style="text-decoration: none; border-bottom: 3px solid #0b0b0b; padding-bottom: 4px; align-self: flex-start;">Quiénes somos →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top: 3px solid #0b0b0b; padding: 24px 20px 32px 20px; display: flex; flex-direction: column; gap: 18px;">
+    <div class="display" style="font-size: 64px; line-height: 0.85; color: {{accent}};">Dale al play.</div>
+    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4b4b46;">
+      <span>hola@owmakers.com · 955 295 612</span>
+      <span>Calle Barrena 5, 41008 Sevilla</span>
+      <span>LinkedIn · Instagram · Vimeo</span>
+      <span style="margin-top: 8px;">On White Makers, S.L. · Aviso legal · Privacidad · Cookies</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#ff4d00","options":["#ff4d00","#ff2d8a","#c6ff00","#1f35ff"],"section":"Marca"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#ff4d00' };
+  }
+}
+</script>
+</body>
+</html>
