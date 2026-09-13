@@ -9,8 +9,9 @@ year: 2025
 vimeoId: "1007717865"
 duration: "03:54"
 date: "2024-09-09"
+cover: "../../../assets/casos/mastercard-premios-frace.jpg"
 coverTone: "ink"
-coverAlt: "Still from Mastercard's FRACE Awards 2024 film: one of the award-winning scientists interviewed in her lab"
+coverAlt: "Still from the FRACE Awards 2024 film: aerial view of Santiago de Compostela, one of the cities where it was shot"
 deliverables:
   - "Photo and video coverage of Mastercard Innovation Forum Spain (2022, 2023 and 2025)"
   - "Same-day edit and event aftermovie; build-up case film"

@@ -9,8 +9,9 @@ year: 2023
 vimeoId: "816887868"
 duration: "03:49"
 date: "2023-04-12"
+cover: "../../../assets/casos/jti-annual-convention.jpg"
 coverTone: "ink"
-coverAlt: "Plenary session of JTI Iberia's annual convention at Porto's Super Bock Arena"
+coverAlt: "Still from the IBERIA CORE convention film: aerial view of Porto at sunset with the Dom Luís I bridge"
 deliverables:
   - "Event film, 3'49\""
   - "Short cut of the plenary tribute"

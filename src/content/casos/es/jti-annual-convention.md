@@ -9,8 +9,9 @@ year: 2023
 vimeoId: "816887868"
 duration: "03:49"
 date: "2023-04-12"
+cover: "../../../assets/casos/jti-annual-convention.jpg"
 coverTone: "ink"
-coverAlt: "Plenaria de la convención anual de JTI Iberia en el Super Bock Arena de Oporto"
+coverAlt: "Fotograma del vídeo de la convención IBERIA CORE: vista aérea de Oporto al atardecer con el puente Don Luis I"
 deliverables:
   - "Vídeo resumen de la convención 3'49\""
   - "Vídeo corto del reconocimiento en plenaria"
