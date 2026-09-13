@@ -4,9 +4,9 @@ slug: "emasesa-resiliencia-hidrica"
 lang: "en"
 client: "Emasesa"
 type: "institucional"
-coverTone: "accent"
-featured: true
-order: 5
+coverTone: "ink"
+featured: false
+order: 6
 pending: true
 lead: "Corporate film on water management in Seville."
 ---
