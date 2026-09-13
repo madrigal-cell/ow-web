@@ -4,9 +4,9 @@ slug: "emasesa-resiliencia-hidrica"
 lang: "es"
 client: "Emasesa"
 type: "institucional"
-coverTone: "accent"
-featured: true
-order: 5
+coverTone: "ink"
+featured: false
+order: 6
 pending: true
 lead: "Vídeo institucional sobre la gestión del agua en Sevilla."
 ---
