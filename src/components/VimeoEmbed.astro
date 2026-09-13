@@ -2,15 +2,16 @@
 /**
  * Vídeo de Vimeo embebido en la propia web (nunca se envía al usuario a Vimeo).
  * Fachada: no carga nada de Vimeo hasta que el usuario pulsa play.
+ * Los vídeos no listados de Vimeo necesitan además su `vimeoHash`.
  * Sin vimeoId muestra un hueco del color indicado con el aviso de pendiente.
  */
 import { Image } from 'astro:assets';
 import { resolveLocale, dict } from '../i18n';
-interface Props { vimeoId?: string; title: string; tone?: 'accent' | 'ink' | 'paper'; label?: string; poster?: ImageMetadata; posterAlt?: string }
-const { vimeoId, title, tone = 'ink', label, poster, posterAlt = '' } = Astro.props;
+interface Props { vimeoId?: string; vimeoHash?: string; title: string; tone?: 'accent' | 'ink' | 'paper'; label?: string; poster?: ImageMetadata; posterAlt?: string }
+const { vimeoId, vimeoHash, title, tone = 'ink', label, poster, posterAlt = '' } = Astro.props;
 const d = dict(resolveLocale(Astro.currentLocale));
 ---
-<div class:list={['vimeo', `vimeo--${tone}`, { 'vimeo--poster': !!poster }]} data-vimeo-id={vimeoId}>
+<div class:list={['vimeo', `vimeo--${tone}`, { 'vimeo--poster': !!poster }]} data-vimeo-id={vimeoId} data-vimeo-hash={vimeoHash}>
   {poster && <Image class="vimeo__poster" src={poster} alt={posterAlt} widths={[640, 1024, 1600]} sizes="(min-width: 1600px) 1500px, 100vw" loading="eager" fetchpriority="high" />}
   {vimeoId ? (
     <button class="vimeo__play" type="button" aria-label={`${d.showreel.play}: ${title}`}>
@@ -44,12 +45,13 @@ const d = dict(resolveLocale(Astro.currentLocale));
 <script>
   document.querySelectorAll<HTMLElement>('.vimeo[data-vimeo-id]').forEach((box) => {
     const id = box.dataset.vimeoId;
+    const hash = box.dataset.vimeoHash;
     const btn = box.querySelector<HTMLButtonElement>('.vimeo__play');
     const player = box.querySelector<HTMLElement>('.vimeo__player');
     if (!id || !btn || !player) return;
     btn.addEventListener('click', () => {
       const iframe = document.createElement('iframe');
-      iframe.src = `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;
+      iframe.src = `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1${hash ? `&h=${hash}` : ``}`;
       iframe.allow = 'autoplay; fullscreen; picture-in-picture';
       iframe.title = btn.getAttribute('aria-label') ?? 'Vimeo';
       player.replaceChildren(iframe);

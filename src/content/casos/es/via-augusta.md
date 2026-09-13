@@ -6,6 +6,7 @@ client: "Ayuntamiento de Cartagena"
 type: "institucional"
 year: 2025
 vimeoId: "1120878253"
+vimeoHash: "7aae90413e"
 duration: "14:25"
 date: "2025-09-22"
 coverTone: "accent"

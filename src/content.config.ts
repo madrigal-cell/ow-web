@@ -20,6 +20,8 @@ const casos = defineCollection({
       type: z.enum(['evento', 'marca', 'institucional', 'foto']),
       year: z.number().int().optional(),
       vimeoId: z.string().optional(),
+      /** Código de acceso de Vimeo (el tramo tras la barra en vimeo.com/ID/CODIGO) para vídeos no listados. */
+      vimeoHash: z.string().optional(),
       duration: z.string().optional(),
       /** Fecha de publicación del vídeo (AAAA-MM-DD), para los datos estructurados. */
       date: z.string().optional(),

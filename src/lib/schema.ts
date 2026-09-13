@@ -83,7 +83,7 @@ export function isoDuration(mmss?: string) {
   return `PT${m || 0}M${s || 0}S`;
 }
 
-export function videoObject(o: { name: string; description: string; vimeoId: string; thumbnail?: string; uploadDate?: string; duration?: string; pageUrl: string }) {
+export function videoObject(o: { name: string; description: string; vimeoId: string; vimeoHash?: string; thumbnail?: string; uploadDate?: string; duration?: string; pageUrl: string }) {
   return {
     '@type': 'VideoObject',
     name: o.name,
@@ -91,8 +91,8 @@ export function videoObject(o: { name: string; description: string; vimeoId: str
     thumbnailUrl: [abs(o.thumbnail ?? site.ogImage)],
     uploadDate: o.uploadDate ?? '2024-01-01',
     duration: isoDuration(o.duration),
-    embedUrl: `https://player.vimeo.com/video/${o.vimeoId}`,
-    contentUrl: `https://vimeo.com/${o.vimeoId}`,
+    embedUrl: `https://player.vimeo.com/video/${o.vimeoId}${o.vimeoHash ? `?h=${o.vimeoHash}` : ``}`,
+    contentUrl: `https://vimeo.com/${o.vimeoId}${o.vimeoHash ? `/${o.vimeoHash}` : ``}`,
     url: abs(o.pageUrl),
     publisher: { '@id': ORG_ID },
   };
