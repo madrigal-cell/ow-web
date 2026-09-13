@@ -32,7 +32,7 @@ Nanook Agency produce en España los eventos de Mastercard: el Mastercard Innova
 
 **Mastercard for Fintechs Iberia (2024).** Encuentro de un centenar de personas en el Google for Startups Campus de Madrid: cobertura fotográfica entregada al día siguiente y aftermovie de dos minutos con entrevistas a ponentes, siguiendo la línea de las piezas que Mastercard había hecho en Francia y Bélgica.
 
-**Premios FRACE.** Es la parte de comunicación de la cuenta. Mastercard y la Fundación Real Academia de Ciencias de España premian cada año a cuatro jóvenes científicas, y el vídeo que las presenta se estrena en el Innovation Forum. Lo hemos producido tres años seguidos, y cada año son cuatro científicas nuevas en cuatro ciudades nuevas: en 2022 Valencia, Madrid y Barcelona; en 2023 Madrid; en 2024 la Plataforma Solar de Almería, Viena, Lisboa y Santiago de Compostela, con un equipo de dos personas que viaja a entrevistar a cada premiada en su laboratorio, su aula o su ciudad. El guion se construye en montaje entrelazando las cuatro voces; rótulos con la identidad de Mastercard; pieza de casi cuatro minutos en 4K más versiones cortadas a la geometría exacta de las dos pantallas LED del escenario y un vertical de 15" para redes.
+**Premios FRACE.** Es la parte de comunicación de la cuenta. Mastercard y la Fundación Real Academia de Ciencias de España premian cada año a cuatro jóvenes científicas, y el vídeo que las presenta se estrena en el Innovation Forum. Lo hemos producido tres años seguidos, y cada año son cuatro científicas nuevas en cuatro ciudades nuevas: en 2022 Valencia, Madrid y Barcelona; en 2023 Madrid; en 2024 la Plataforma Solar de Almería, Viena, Lisboa y Santiago de Compostela, con un equipo de dos personas, realizador y director de fotografía, que viaja a entrevistar a cada premiada en su laboratorio, su aula o su ciudad: Isabel Oller (CIEMAT), Irene Valenzuela (Universidad Autónoma de Madrid), Blanca Ausín (Universidad de Salamanca) y Rosa María Crujeiras (Universidade de Santiago de Compostela). El guion se construye en montaje entrelazando las cuatro voces; rótulos con la identidad de Mastercard; pieza de casi cuatro minutos en 4K más versiones cortadas a la geometría exacta de las dos pantallas LED del escenario y un vertical de 15" para redes.
 
 ## Resultado
 
@@ -45,5 +45,6 @@ Una relación de cuatro años que empezó con un vídeo y hoy cubre todo lo que 
 - Productora: On White (Sevilla)
 - Eventos: Mastercard Innovation Forum Spain 2022, 2023 y 2025 (Madrid) · Mastercard for Fintechs Iberia 2024 (Google for Startups, Madrid)
 - Contenido: vídeo Premios FRACE 2022, 2023 y 2024 · rodajes en Valencia, Madrid, Barcelona, Almería, Viena, Lisboa y Santiago de Compostela
+- Equipo FRACE 2024: Joaquín Madrigal (realización) y Álvaro (dirección de fotografía y cámara)
 - Entregables: fotografía de evento, same-day edit, aftermovie, entrevistas, vídeo case, piezas para pantallas LED y redes
 - Años: 2022-2025

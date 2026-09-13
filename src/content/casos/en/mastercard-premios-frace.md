@@ -32,7 +32,7 @@ Nanook Agency produces Mastercard's events in Spain: the Mastercard Innovation F
 
 **Mastercard for Fintechs Iberia (2024).** A hundred-person meet-up at Google for Startups Campus in Madrid: photo coverage delivered the next day and a two-minute aftermovie with speaker interviews, in line with the films Mastercard had produced in France and Belgium.
 
-**FRACE Awards.** This is the communications side of the account. Mastercard and the Royal Academy of Sciences of Spain Foundation honour four young female scientists every year, and the film introducing them premieres at the Innovation Forum. We have produced it three years running, and every year it means four new scientists in four new cities: Valencia, Madrid and Barcelona in 2022; Madrid in 2023; and in 2024 the Plataforma Solar de Almería, Vienna, Lisbon and Santiago de Compostela, with a two-person crew travelling to interview each winner in her lab, her lecture hall or her city. The script is built in the edit by interweaving the four voices; Mastercard-branded titles; a near four-minute 4K film plus versions cut to the exact geometry of the two stage LED screens and a 15" vertical for social.
+**FRACE Awards.** This is the communications side of the account. Mastercard and the Royal Academy of Sciences of Spain Foundation honour four young female scientists every year, and the film introducing them premieres at the Innovation Forum. We have produced it three years running, and every year it means four new scientists in four new cities: Valencia, Madrid and Barcelona in 2022; Madrid in 2023; and in 2024 the Plataforma Solar de Almería, Vienna, Lisbon and Santiago de Compostela, with a two-person crew, director and cinematographer, travelling to interview each winner in her lab, her lecture hall or her city: Isabel Oller (CIEMAT), Irene Valenzuela (Universidad Autónoma de Madrid), Blanca Ausín (Universidad de Salamanca) and Rosa María Crujeiras (Universidade de Santiago de Compostela). The script is built in the edit by interweaving the four voices; Mastercard-branded titles; a near four-minute 4K film plus versions cut to the exact geometry of the two stage LED screens and a 15" vertical for social.
 
 ## Result
 
@@ -45,5 +45,6 @@ A four-year relationship that started with one film and now covers everything Ma
 - Production company: On White (Seville, Spain)
 - Events: Mastercard Innovation Forum Spain 2022, 2023 and 2025 (Madrid) · Mastercard for Fintechs Iberia 2024 (Google for Startups, Madrid)
 - Content: FRACE Awards film 2022, 2023 and 2024 · shot in Valencia, Madrid, Barcelona, Almería, Vienna, Lisbon and Santiago de Compostela
+- FRACE 2024 crew: Joaquín Madrigal (director) and Álvaro (cinematographer and camera)
 - Deliverables: event photography, same-day edit, aftermovie, interviews, case film, LED-screen and social pieces
 - Years: 2022-2025
