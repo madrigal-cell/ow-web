@@ -1,8 +1,10 @@
 ---
 /**
- * Showreel de la home. Sin vídeo aún: póster negro rayado con el mensaje.
- * Con `site.showreel.vimeoId`: el botón carga el reproductor de Vimeo bajo demanda
- * (nada se descarga hasta que el usuario pulsa play: Core Web Vitals intactos).
+ * Showreel de la home. Reel sin sonido: arranca solo, en bucle y sin controles
+ * (modo "background" del reproductor de Vimeo). Mientras carga se ve el marco
+ * negro rayado de la marca. Si el visitante tiene activado "reducir movimiento",
+ * no hay autoplay: se muestra el póster con un botón de play.
+ * Sin `site.showreel.vimeoId`: póster negro rayado con la nota de "en producción".
  */
 import { Image } from 'astro:assets';
 import { resolveLocale, dict, useTranslations } from '../i18n';
@@ -14,46 +16,53 @@ const { vimeoId, year, duration, poster, title } = site.showreel;
 const rec = t('showreel.rec', { year, duration });
 ---
 <section class="reel wrap" aria-label="Showreel">
-  <div class:list={['reel__frame', { 'reel__frame--poster': !!(vimeoId && poster) }]} data-vimeo-id={vimeoId ?? undefined}>
+  <div class="reel__frame" data-vimeo-id={vimeoId ?? undefined} data-title={title}>
     <div class="reel__stripes" aria-hidden="true"></div>
-    {vimeoId && poster && <Image class="reel__poster" src={poster} alt={title} widths={[640, 1024, 1600]} sizes="(min-width: 1600px) 1500px, 100vw" loading="eager" fetchpriority="high" />}
+    {vimeoId && poster && <Image class="reel__poster" src={poster} alt={title} widths={[640, 1024, 1600]} sizes="(min-width: 1600px) 1500px, 100vw" loading="lazy" />}
+    <div class="reel__player" hidden></div>
     <p class="label reel__rec"><span class="reel__dot" aria-hidden="true"></span>{rec}</p>
-    <div class="reel__cta">
-      <button class="reel__play" type="button" aria-label={d.showreel.play} disabled={!vimeoId}>
+    {vimeoId && (
+      <button class="reel__play" type="button" aria-label={d.showreel.play} hidden>
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5v15l12-7.5-12-7.5z" fill="currentColor"/></svg>
       </button>
-      <p class="display reel__title">{d.showreel.title}</p>
-    </div>
-    {!vimeoId && <p class="reel__note">{d.showreel.pending}</p>}
-    <div class="reel__player" hidden></div>
+    )}
+    {!vimeoId && (
+      <div class="reel__cta">
+        <p class="display reel__title">{d.showreel.title}</p>
+        <p class="reel__note">{d.showreel.pending}</p>
+      </div>
+    )}
   </div>
 </section>
 
 <style>
-  .reel__frame { position: relative; background: var(--color-ink); color: var(--color-bg); aspect-ratio: 350 / 420; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+  .reel__frame { position: relative; background: var(--color-ink); color: var(--color-bg); aspect-ratio: 4 / 3; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
   .reel__stripes { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, var(--color-ink) 0 28px, var(--color-stripe-dark) 28px 56px); }
-  .reel__rec { position: relative; display: flex; align-items: center; gap: 0.625rem; }
+  .reel__rec { position: relative; z-index: 2; display: flex; align-items: center; gap: 0.625rem; text-shadow: 0 1px 8px rgba(11, 11, 11, 0.6); }
   .reel__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); animation: blink 1.6s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0.25; } }
-  .reel__cta { position: relative; display: flex; flex-direction: column; gap: 1rem; }
-  .reel__play { width: 72px; height: 72px; background: var(--color-accent); color: var(--color-ink); display: grid; place-items: center; flex: none; transition: transform var(--dur) var(--ease), background var(--dur) var(--ease); }
-  .reel__play svg { width: 30px; height: 30px; }
-  .reel__play:not(:disabled):hover { background: var(--color-bg); transform: scale(1.04); }
-  .reel__play:disabled { cursor: default; }
+  .reel__cta { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 1rem; }
   .reel__title { font-size: var(--fs-h2); line-height: 0.95; white-space: pre-line; }
   .reel__note { display: none; }
-  .reel :global(.reel__poster) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .reel__frame--poster::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11, 11, 11, 0.75), rgba(11, 11, 11, 0.15) 55%, rgba(11, 11, 11, 0.35)); pointer-events: none; }
-  .reel__frame--poster .reel__rec, .reel__frame--poster .reel__cta { z-index: 1; }
-  .reel__player { position: absolute; inset: 0; background: #000; }
-  .reel__player :global(iframe) { width: 100%; height: 100%; border: 0; }
+  .reel__play { position: relative; z-index: 2; width: 72px; height: 72px; background: var(--color-accent); color: var(--color-ink); display: grid; place-items: center; flex: none; transition: transform var(--dur) var(--ease), background var(--dur) var(--ease); }
+  .reel__play[hidden] { display: none; }
+  .reel__play svg { width: 30px; height: 30px; }
+  .reel__play:hover { background: var(--color-bg); transform: scale(1.04); }
+  .reel :global(.reel__poster) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+  .reel__frame--poster :global(.reel__poster) { display: block; }
+  .reel__frame--poster::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(11, 11, 11, 0.75), rgba(11, 11, 11, 0.15) 55%, rgba(11, 11, 11, 0.35)); pointer-events: none; }
+  /* El reproductor rellena el marco como una imagen "cover": recorta el 16:9 en vez de dejar bandas. */
+  .reel__player { position: absolute; inset: 0; background: var(--color-ink); container-type: size; opacity: 0; transition: opacity 600ms var(--ease); }
+  .reel__player.is-ready { opacity: 1; }
+  .reel__player :global(iframe) { position: absolute; top: 50%; left: 50%; width: 100cqw; height: 56.25cqw; min-width: 177.78cqh; min-height: 100cqh; transform: translate(-50%, -50%); border: 0; pointer-events: none; }
+  .reel__player--controls :global(iframe) { pointer-events: auto; }
 
   @media (min-width: 900px) {
     .reel__frame { aspect-ratio: 1344 / 620; padding: 2rem; flex-direction: row; align-items: flex-end; }
     .reel__stripes { background: repeating-linear-gradient(135deg, var(--color-ink) 0 40px, var(--color-stripe-dark) 40px 80px); }
     .reel__rec { position: absolute; left: 2rem; top: 2rem; gap: 0.75rem; }
     .reel__dot { width: 12px; height: 12px; }
-    .reel__cta { flex-direction: row; align-items: center; gap: 1.5rem; }
+    .reel__cta { flex-direction: row; align-items: flex-end; justify-content: space-between; width: 100%; gap: 1.5rem; }
     .reel__play { width: 120px; height: 120px; }
     .reel__play svg { width: 44px; height: 44px; }
     .reel__note { display: block; position: relative; color: var(--color-muted-dark); font-size: var(--fs-small); max-width: 20rem; line-height: 1.4; text-align: right; }
@@ -64,17 +73,36 @@ const rec = t('showreel.rec', { year, duration });
 <script>
   const frame = document.querySelector<HTMLElement>('.reel__frame');
   const id = frame?.dataset.vimeoId;
-  const btn = frame?.querySelector<HTMLButtonElement>('.reel__play');
   const player = frame?.querySelector<HTMLElement>('.reel__player');
-  if (frame && id && btn && player) {
-    btn.addEventListener('click', () => {
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;
-      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-      iframe.title = btn.getAttribute('aria-label') ?? 'Showreel';
-      player.replaceChildren(iframe);
-      player.hidden = false;
-      frame.querySelectorAll<HTMLElement>('.reel__rec, .reel__cta, .reel__note').forEach((el) => (el.hidden = true));
-    }, { once: true });
+  const btn = frame?.querySelector<HTMLButtonElement>('.reel__play');
+  const title = frame?.dataset.title ?? 'Showreel';
+
+  function mount(src: string, controls: boolean) {
+    if (!player) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+    iframe.title = title;
+    iframe.addEventListener('load', () => player.classList.add('is-ready'));
+    player.classList.toggle('reel__player--controls', controls);
+    player.replaceChildren(iframe);
+    player.hidden = false;
+  }
+
+  if (frame && id && player) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce && btn) {
+      // Sin autoplay: póster + botón. Al pulsar, reproductor normal con controles.
+      frame.classList.add('reel__frame--poster');
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        mount(`https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`, true);
+        btn.hidden = true;
+        frame.classList.remove('reel__frame--poster');
+      }, { once: true });
+    } else {
+      // Reel mudo: arranca solo, en bucle, sin controles ni interfaz de Vimeo.
+      mount(`https://player.vimeo.com/video/${id}?background=1&autoplay=1&muted=1&loop=1&autopause=0&dnt=1`, false);
+    }
   }
 </script>
