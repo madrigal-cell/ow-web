@@ -107,7 +107,10 @@ const rec = t('showreel.rec', { year, duration });
       // Se monta cuando la página ya está pintada, para que el reproductor no
       // compita con la portada (FCP/LCP) en conexiones lentas.
       const start = () => mount(`https://player.vimeo.com/video/${id}?background=1&autoplay=1&muted=1&loop=1&autopause=0&dnt=1`, false);
-      const defer = () => ('requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 200));
+      // Doble requestAnimationFrame: garantiza al menos un fotograma pintado antes de montar el iframe,
+      // también en móviles lentos donde `load` puede dispararse antes del primer pintado.
+      const idle = () => ('requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 200));
+      const defer = () => requestAnimationFrame(() => requestAnimationFrame(idle));
       document.readyState === 'complete' ? defer() : window.addEventListener('load', defer, { once: true });
     }
   }
