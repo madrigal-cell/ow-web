@@ -16,6 +16,8 @@ const { vimeoId, year, duration, poster, title } = site.showreel;
 const rec = t('showreel.rec', { year, duration });
 ---
 <section class="reel wrap" aria-label="Showreel">
+  {vimeoId && <link rel="preconnect" href="https://player.vimeo.com" />}
+  {vimeoId && <link rel="preconnect" href="https://f.vimeocdn.com" />}
   <div class="reel__frame" data-vimeo-id={vimeoId ?? undefined} data-title={title}>
     <div class="reel__stripes" aria-hidden="true"></div>
     {vimeoId && poster && <Image class="reel__poster" src={poster} alt={title} widths={[640, 1024, 1600]} sizes="(min-width: 1600px) 1500px, 100vw" loading="lazy" />}
@@ -102,7 +104,11 @@ const rec = t('showreel.rec', { year, duration });
       }, { once: true });
     } else {
       // Reel mudo: arranca solo, en bucle, sin controles ni interfaz de Vimeo.
-      mount(`https://player.vimeo.com/video/${id}?background=1&autoplay=1&muted=1&loop=1&autopause=0&dnt=1`, false);
+      // Se monta cuando la página ya está pintada, para que el reproductor no
+      // compita con la portada (FCP/LCP) en conexiones lentas.
+      const start = () => mount(`https://player.vimeo.com/video/${id}?background=1&autoplay=1&muted=1&loop=1&autopause=0&dnt=1`, false);
+      const defer = () => ('requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 200));
+      document.readyState === 'complete' ? defer() : window.addEventListener('load', defer, { once: true });
     }
   }
 </script>
