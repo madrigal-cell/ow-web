@@ -1,0 +1,33 @@
+---
+/**
+ * Barra de comparación de las opciones de home (solo en /pruebas/, páginas no indexadas).
+ * Temporal: cuando se elija opción, se borra junto con src/pages/pruebas/.
+ */
+interface Props { current: 'a' | 'b' | 'c' }
+const { current } = Astro.props;
+const opciones = [
+  { id: 'a', href: '/pruebas/a/', name: 'A · Lista' },
+  { id: 'b', href: '/pruebas/b/', name: 'B · Índice' },
+  { id: 'c', href: '/pruebas/c/', name: 'C · Bandas' },
+] as const;
+---
+<div class="pruebas label">
+  <span class="pruebas__tag">Prueba</span>
+  {opciones.map((o) => (
+    <a class:list={['pruebas__link', { 'is-on': o.id === current }]} href={o.href} aria-current={o.id === current ? 'page' : undefined}>{o.name}</a>
+  ))}
+</div>
+
+<style>
+  .pruebas {
+    position: fixed; z-index: 60; left: 50%; bottom: 1rem; transform: translateX(-50%);
+    display: flex; align-items: stretch; gap: var(--line-thin);
+    background: var(--color-ink); color: var(--color-bg);
+    border: var(--line) solid var(--color-ink);
+  }
+  .pruebas__tag { display: none; align-items: center; padding: 0.75rem 0.875rem; color: var(--color-accent); }
+  .pruebas__link { display: flex; align-items: center; padding: 0.75rem 0.875rem; background: var(--color-ink); transition: background var(--dur) var(--ease), color var(--dur) var(--ease); }
+  .pruebas__link:hover { background: var(--color-accent); color: var(--color-ink); }
+  .pruebas__link.is-on { background: var(--color-bg); color: var(--color-ink); }
+  @media (min-width: 700px) { .pruebas__tag { display: flex; } }
+</style>

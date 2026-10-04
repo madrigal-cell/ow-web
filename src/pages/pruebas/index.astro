@@ -1,0 +1,50 @@
+---
+// Índice de las pruebas de home. No indexada. Se borra cuando se elija opción.
+import Page from '../../layouts/Page.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const opciones = [
+  {
+    href: '/pruebas/a/',
+    name: 'A · Lista tipo blog',
+    text: 'Los trabajos, uno por fila: portada a la izquierda, título y entradilla a la derecha. Todos del mismo tamaño. El orden manda.',
+  },
+  {
+    href: '/pruebas/b/',
+    name: 'B · Índice',
+    text: 'Los trabajos como un listado: número, título, tipo y año, con miniatura. Caben muchos sin cansar y se escanea en dos segundos.',
+  },
+  {
+    href: '/pruebas/c/',
+    name: 'C · Bandas a ancho completo (elegida)',
+    text: 'Cada trabajo, una banda de pared a pared con la portada grande, todas iguales. Es la que está puesta en la home.',
+  },
+];
+---
+<Page noindex title="Pruebas de home" description="Pruebas internas de home.">
+  <PageHead kicker="Interno" title="Opciones de home" lead="Tres montajes de la misma home para comparar. Páginas de prueba, no indexadas." />
+  <section class="wrap opciones">
+    <ul role="list">
+      {opciones.map((o) => (
+        <li class="op">
+          <a class="op__link" href={o.href}>
+            <h2 class="display op__name">{o.name}</h2>
+            <p class="op__text muted">{o.text}</p>
+            <span class="label op__more">Verla →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Page>
+
+<style>
+  .opciones { padding-bottom: var(--section-y-lg); }
+  .op { border-top: var(--line) solid var(--color-ink); }
+  .op:last-child { border-bottom: var(--line) solid var(--color-ink); }
+  .op__link { display: flex; flex-direction: column; gap: 0.625rem; padding-block: 1.75rem; }
+  .op__name { font-size: var(--fs-row); line-height: 1; transition: color var(--dur) var(--ease); }
+  .op__link:hover .op__name { color: var(--color-accent); }
+  .op__text { max-width: 60ch; }
+  .op__more { color: var(--color-accent-ink); }
+</style>

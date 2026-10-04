@@ -14,7 +14,7 @@ items:
   - "Plató propio de 100 m²"
   - "Fotografía de producto y campaña"
 caseType: "marca"
-order: 2
+order: 1
 ---
 
 La agencia trae la idea y el guion; nosotros ponemos la producción: casting, localizaciones, plató, equipo de cámara y luz, dirección de foto, edición, color y motion. Trabajamos con el brief cerrado y validaciones en cada fase para que el resultado sea el que se vendió al cliente.

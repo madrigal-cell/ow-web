@@ -14,7 +14,7 @@ items:
   - "Fotografía de evento"
   - "Entrevistas y testimoniales en el propio evento"
 caseType: "evento"
-order: 1
+order: 2
 ---
 
 Un evento no se repite. Por eso llegamos con el plan de rodaje cerrado, el equipo que la agencia ya conoce y redundancia técnica en cámaras, grabación y sonido. Lo que pasa en el escenario, en el networking y en el backstage queda grabado a la primera.

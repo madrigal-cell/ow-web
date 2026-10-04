@@ -1,5 +1,5 @@
 // Datos fijos de la empresa. Una sola fuente para pie, contacto, JSON-LD y llms.txt.
-import showreelPoster from '../assets/showreel-2020.jpg';
+import showreelPoster from '../assets/showreel-2026.jpg';
 
 export const site = {
   name: 'On White',
@@ -27,13 +27,13 @@ export const site = {
   /** Imágenes para datos estructurados y redes. */
   logo: '/img/icon-512.png',
   ogImage: '/img/og-default.jpg',
-  /** Showreel de la home. Provisional: Reel 2020 hasta que exista el Showreel 2026 (cambiar vimeoId, year, duration y poster). */
+  /** Showreel de la home (para cambiarlo: vimeoId, year, duration, date, title y poster). */
   showreel: {
-    vimeoId: '483190847' as string | null,
-    year: 2020,
-    duration: '01:25',
-    date: '2020-11-24',
-    title: 'On White Makers · Reel 2020',
+    vimeoId: '1232333762' as string | null,
+    year: 2026,
+    duration: '00:41',
+    date: '2026-10-02',
+    title: 'On White Makers · Reel 2026',
     poster: showreelPoster,
   },
 } as const;

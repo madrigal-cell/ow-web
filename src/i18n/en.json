@@ -2,8 +2,8 @@
   "meta": {
     "siteName": "On White",
     "legalName": "On White Makers, S.L.",
-    "defaultTitle": "On White · Video production company in Seville for event and communication agencies",
-    "defaultDescription": "On White is a video production company based in Seville, Spain, specialising in commercials, branded content, corporate events, conferences and photography for event and communication agencies. Seville, Madrid and wherever you need us."
+    "defaultTitle": "On White · Video production for advertising, communication and event agencies",
+    "defaultDescription": "On White is a video production company based in Seville, Spain, specialising in commercials, branded content, corporate video, events, conferences and photography for advertising, communication and event agencies. Madrid, Andalusia and wherever you need us."
   },
   "nav": {
     "work": "Work",
@@ -24,7 +24,7 @@
   "hero": {
     "brand": "On White.",
     "claim": "Black, white and\neverything in colour.",
-    "sub": "Video production for event and communication agencies. Seville, Madrid and wherever you need us.",
+    "sub": "Video production for advertising, communication and event agencies. Madrid, Andalusia and wherever you need us.",
     "services": "Commercials · Branded content · Events & conferences · Photography"
   },
   "showreel": {
@@ -36,21 +36,22 @@
   "work": {
     "title": "Work",
     "seeAll": "See all {n} projects →",
-    "seeAllShort": "All {n} →"
+    "seeAllShort": "All {n} →",
+    "read": "See the project →"
   },
   "agencies": {
     "kicker": "For agencies",
-    "title": "You sell the idea.\nWe shoot it.",
-    "p1t": "Brief in 24 h",
-    "p1": "Send us the brief and within one working day you get a fixed quote, a shooting plan and the crew list.",
-    "p2t": "No second takes",
-    "p2": "Real pre-production, in-house crew and technical redundancy. What we shoot, we deliver.",
-    "p3t": "Fast delivery",
-    "p3": "Same-day edit, aftermovie in 24-48 h, photos the same day. Your campaign sets the deadline, not our calendar."
+    "title": "Your idea.\nOur headache.",
+    "p1t": "Within 24 h",
+    "p1": "Send us the brief and the next day you get the fixed quote, the shooting plan and the names of who is coming. No ten-email thread.",
+    "p2t": "No babysitting",
+    "p2": "Whether it is an event with your client next to you or a three-day shoot, you will not have to keep an eye on us. We arrive early and whatever goes wrong, we sort it before anyone notices.",
+    "p3t": "Your date",
+    "p3": "On a campaign: first cut, final cut and versions for every format. On an event: a cut that same night and the aftermovie in 24-48 h. Your client sets the deadline, not our calendar."
   },
   "about": {
-    "title": "Seville.\nOwn studio.\nOwn cameras.\nOwn stubbornness.",
-    "p1": "We are On White, a video production company based in Seville with a 100 m² studio. We have spent years shooting for brands and agencies that cannot afford an \"almost\".",
+    "title": "Own studio.\nOwn cameras.\nOwn stubbornness.",
+    "p1": "We are On White. We have spent years shooting for advertising, communication and event agencies, mostly in Madrid and Andalusia. A 100 m² studio, our own cameras and our own crew: what we promise, we shoot ourselves.",
     "p2": "Commercials, branded content, events, conferences and photography. With an advertising eye, not a home-video one.",
     "link": "Who we are →"
   },
@@ -75,7 +76,7 @@
   },
   "types": {
     "evento": "Event",
-    "marca": "Commercial",
+    "marca": "Brand content",
     "institucional": "Corporate",
     "foto": "Photography"
   },
@@ -89,7 +90,7 @@
   "workPage": {
     "kicker": "Work",
     "title": "What we have shot.",
-    "lead": "Events, conferences, commercials, branded and corporate content for agencies and brands that cannot afford an \"almost\".",
+    "lead": "Commercials, branded content, events, conferences and corporate video. This is what we have shot over the past few years.",
     "all": "All",
     "empty": "No projects in this category yet.",
     "count": "{n} projects"
@@ -105,7 +106,9 @@
     "pending": "Case in preparation: copy, video and photos pending confirmation.",
     "back": "← All work",
     "next": "Next project",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "pieces": "More pieces from this project",
+    "piecesNote": "They play right here, in the frame above."
   },
   "servicesPage": {
     "kicker": "Services",
@@ -124,7 +127,7 @@
   },
   "agenciesPage": {
     "kicker": "For agencies",
-    "lead": "We are the production company event and communication agencies bring to their projects. We do not compete with you: we produce what you have sold.",
+    "lead": "We are the production company advertising, communication and event agencies bring to their projects. We do not compete with you: we produce what you have sold.",
     "processTitle": "How we work with you",
     "steps": [
       {
@@ -136,28 +139,28 @@
         "d": "No open items and no extras the day after. Travel, per diems and hours included."
       },
       {
-        "t": "Technical meeting",
-        "d": "We go through the running order, venue, lighting, sound and live needs with your production team."
+        "t": "Pre-production meeting",
+        "d": "We go through the script or running order, locations or venue, lighting, sound and live needs with your team."
       },
       {
         "t": "Rider and shooting plan",
         "d": "A document with camera positions, timings, crew and kit. You approve it."
       },
       {
-        "t": "Crew on the day",
-        "d": "The crew you met in the meeting is the crew that shows up. Redundancy in cameras, recording and sound."
+        "t": "The crew you met",
+        "d": "The crew you met in the meeting is the crew that shows up, be it a studio, a street or a conference centre. Redundancy in cameras, recording and sound."
       },
       {
         "t": "Staggered delivery",
-        "d": "Social clips at the event, recap that night, aftermovie in 24-48 h and photos the same day."
+        "d": "On a campaign: first cut, final cut and versions for every format. On an event: social clips during, recap that night, aftermovie in 24-48 h and photos the same day."
       }
     ],
     "needTitle": "What we need from you",
     "need": [
       "Brief with objective, audience and deliverables",
-      "Running order or event programme",
-      "Date, city and venue",
-      "Production contact on site",
+      "Script, storyboard or running order, if you have one",
+      "Date, city and where we shoot",
+      "A production contact on your side",
       "End client's brand guidelines"
     ],
     "faqTitle": "Frequently asked questions",

@@ -47,8 +47,10 @@ export default defineConfig({
         defaultLocale: 'es',
         locales: { es: 'es-ES', en: 'en' },
       },
-      // Fuera del sitemap: 404, páginas de gracias y legales mientras sean borrador.
+      // Fuera del sitemap: 404, páginas de gracias, legales mientras sean borrador
+      // y las pruebas internas de home (/pruebas/).
       filter: (page) =>
+        !page.includes('/pruebas/') &&
         !['/404', '/gracias/', '/en/thanks/', '/aviso-legal/', '/privacidad/', '/cookies/', '/en/legal-notice/', '/en/privacy/', '/en/cookies/'].some((p) => page.endsWith(p)),
     }),
   ],

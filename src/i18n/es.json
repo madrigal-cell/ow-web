@@ -2,8 +2,8 @@
   "meta": {
     "siteName": "On White",
     "legalName": "On White Makers, S.L.",
-    "defaultTitle": "On White · Productora audiovisual en Sevilla para agencias de eventos y comunicación",
-    "defaultDescription": "On White es una productora audiovisual con sede en Sevilla especializada en spots, contenido de marca, eventos, congresos y fotografía para agencias de eventos y comunicación. Sevilla, Madrid y donde haga falta."
+    "defaultTitle": "On White · Productora audiovisual para agencias de publicidad, comunicación y eventos",
+    "defaultDescription": "On White es una productora audiovisual con sede en Sevilla especializada en spots, contenido de marca, vídeo institucional, eventos, congresos y fotografía para agencias de publicidad, comunicación y eventos. Madrid, Andalucía y donde haga falta."
   },
   "nav": {
     "work": "Trabajos",
@@ -24,7 +24,7 @@
   "hero": {
     "brand": "On White.",
     "claim": "Lo único en blanco\nes el nombre.",
-    "sub": "Productora audiovisual para agencias de eventos y comunicación. Sevilla, Madrid y donde haga falta.",
+    "sub": "Productora audiovisual para agencias de publicidad, comunicación y eventos. Madrid, Andalucía y donde haga falta.",
     "services": "Spots · Contenido de marca · Eventos y congresos · Fotografía"
   },
   "showreel": {
@@ -36,21 +36,22 @@
   "work": {
     "title": "Trabajos",
     "seeAll": "Ver los {n} casos →",
-    "seeAllShort": "Los {n} →"
+    "seeAllShort": "Los {n} →",
+    "read": "Ver el caso →"
   },
   "agencies": {
     "kicker": "Para agencias",
-    "title": "Tú vendes la idea.\nNosotros la rodamos.",
-    "p1t": "Brief 24 h",
-    "p1": "Nos mandas el brief y en un día laborable tienes presupuesto cerrado, plan de rodaje y quién va.",
-    "p2t": "Sin dobles tomas",
-    "p2": "Preproducción de verdad, equipo propio y redundancia técnica. Lo que se rueda, sale.",
-    "p3t": "Entrega rápida",
-    "p3": "Same-day edit, aftermovie en 24-48 h, fotos el mismo día. El plazo lo marca tu campaña, no nuestra agenda."
+    "title": "La idea es tuya.\nEl marrón,\nnuestro.",
+    "p1t": "En 24 horas",
+    "p1": "Nos mandas el brief y al día siguiente tienes el presupuesto cerrado, el plan de rodaje y los nombres de quién va. Sin diez correos de por medio.",
+    "p2t": "Sin estar encima",
+    "p2": "Tanto si es un evento con tu cliente al lado como tres días de rodaje, no vas a tener que estar pendiente de nosotros. Llegamos antes y lo que se tuerza lo resolvemos sin que nadie se entere.",
+    "p3t": "A tu fecha",
+    "p3": "En campaña: primer montaje, cierre y versiones para cada formato. En evento: resumen esa noche y aftermovie en 24-48 h. El plazo lo marca tu cliente, no nuestra agenda."
   },
   "about": {
-    "title": "Sevilla.\nPlató propio.\nCámaras propias.\nCabezonería propia.",
-    "p1": "Somos On White, productora audiovisual con base en Sevilla y plató de 100 m². Llevamos años rodando para marcas y agencias que no pueden permitirse un \"casi\".",
+    "title": "Plató propio.\nCámaras propias.\nCabezonería propia.",
+    "p1": "Somos On White. Llevamos años rodando para agencias de publicidad, de comunicación y de eventos, sobre todo en Madrid y Andalucía. Plató de 100 m², cámaras y equipo propios: lo que prometemos lo rodamos nosotros.",
     "p2": "Spots, contenido de marca, eventos, congresos y fotografía. Con criterio de publicidad, no de vídeo de comunión.",
     "link": "Quiénes somos →"
   },
@@ -75,7 +76,7 @@
   },
   "types": {
     "evento": "Evento",
-    "marca": "Spot",
+    "marca": "Contenido de marca",
     "institucional": "Institucional",
     "foto": "Fotografía"
   },
@@ -89,7 +90,7 @@
   "workPage": {
     "kicker": "Trabajos",
     "title": "Lo que hemos rodado.",
-    "lead": "Eventos, congresos, spots, contenido de marca e institucional para agencias y marcas que no pueden permitirse un \"casi\".",
+    "lead": "Spots, contenido de marca, eventos, congresos e institucional. Esto es lo que hemos rodado en los últimos años.",
     "all": "Todos",
     "empty": "Todavía no hay casos en esta categoría.",
     "count": "{n} casos"
@@ -105,7 +106,9 @@
     "pending": "Caso en preparación: textos, vídeo y fotos pendientes de confirmar.",
     "back": "← Todos los trabajos",
     "next": "Siguiente caso",
-    "gallery": "Galería"
+    "gallery": "Galería",
+    "pieces": "Más piezas del proyecto",
+    "piecesNote": "Se reproducen aquí mismo, en el marco de arriba."
   },
   "servicesPage": {
     "kicker": "Servicios",
@@ -124,7 +127,7 @@
   },
   "agenciesPage": {
     "kicker": "Para agencias",
-    "lead": "Somos la productora que las agencias de eventos y comunicación llevan a sus proyectos. No competimos contigo: producimos lo que tú has vendido.",
+    "lead": "Somos la productora que las agencias de publicidad, comunicación y eventos llevan a sus proyectos. No competimos contigo: producimos lo que tú has vendido.",
     "processTitle": "Así trabajamos contigo",
     "steps": [
       {
@@ -136,28 +139,28 @@
         "d": "Sin partidas abiertas ni extras el día después. Viajes, dietas y horas incluidas."
       },
       {
-        "t": "Reunión técnica",
-        "d": "Repasamos escaleta, sede, luz, sonido y necesidades de directo con tu equipo de producción."
+        "t": "Reunión de preproducción",
+        "d": "Repasamos guion o escaleta, localizaciones o sede, luz, sonido y necesidades de directo con tu equipo."
       },
       {
         "t": "Rider y plan de rodaje",
         "d": "Documento con posiciones de cámara, horarios, equipo humano y técnico. Tú lo apruebas."
       },
       {
-        "t": "Equipo el día D",
-        "d": "El equipo que conociste en la reunión es el que va. Redundancia en cámaras, grabación y sonido."
+        "t": "El equipo que viste",
+        "d": "El equipo que conociste en la reunión es el que va, sea un plató, una calle o un palacio de congresos. Redundancia en cámaras, grabación y sonido."
       },
       {
         "t": "Entregas escalonadas",
-        "d": "Piezas para redes en el evento, resumen esa noche, aftermovie en 24-48 h y fotos el mismo día."
+        "d": "En campaña: primer montaje, cierre y versiones para cada formato. En evento: piezas para redes durante, resumen esa noche, aftermovie en 24-48 h y fotos el mismo día."
       }
     ],
     "needTitle": "Qué necesitamos de ti",
     "need": [
       "Brief con objetivo, público y entregables",
-      "Escaleta o programa del evento",
-      "Fecha, ciudad y sede",
-      "Contacto de producción en sede",
+      "Guion, storyboard o escaleta, si ya lo tienes",
+      "Fecha, ciudad y dónde se rueda",
+      "Un contacto de producción por vuestra parte",
       "Guía de marca del cliente final"
     ],
     "faqTitle": "Preguntas frecuentes",
@@ -173,22 +176,22 @@
     "city": "Ciudad",
     "type": "Tipo de proyecto",
     "typeOptions": [
-      "Evento corporativo",
-      "Congreso",
       "Spot o campaña",
       "Contenido para redes",
       "Vídeo institucional",
+      "Evento corporativo",
+      "Congreso",
       "Fotografía",
       "Otro"
     ],
     "deliverables": "Entregables",
     "deliverableOptions": [
+      "Spot",
+      "Piezas para redes",
+      "Fotografía",
       "Aftermovie",
       "Same-day edit",
       "Streaming",
-      "Fotografía",
-      "Spot",
-      "Piezas para redes",
       "Otro"
     ],
     "deadline": "Plazo de entrega",

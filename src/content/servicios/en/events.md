@@ -14,7 +14,7 @@ items:
   - "Event photography"
   - "Interviews and testimonials on site"
 caseType: "evento"
-order: 1
+order: 2
 ---
 
 An event does not happen twice. That is why we arrive with the shooting plan closed, the crew the agency already knows and technical redundancy in cameras, recording and sound. What happens on stage, at the networking and backstage is captured the first time.

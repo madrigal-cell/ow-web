@@ -44,19 +44,30 @@ const d = dict(resolveLocale(Astro.currentLocale));
 
 <script>
   document.querySelectorAll<HTMLElement>('.vimeo[data-vimeo-id]').forEach((box) => {
-    const id = box.dataset.vimeoId;
-    const hash = box.dataset.vimeoHash;
     const btn = box.querySelector<HTMLButtonElement>('.vimeo__play');
     const player = box.querySelector<HTMLElement>('.vimeo__player');
-    if (!id || !btn || !player) return;
-    btn.addEventListener('click', () => {
+    if (!btn || !player) return;
+
+    /** Monta el reproductor con la pieza indicada; sustituye a la que hubiera sonando. */
+    const play = (id: string, hash: string | undefined, title: string) => {
       const iframe = document.createElement('iframe');
       iframe.src = `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1${hash ? `&h=${hash}` : ``}`;
       iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-      iframe.title = btn.getAttribute('aria-label') ?? 'Vimeo';
+      iframe.title = title;
       player.replaceChildren(iframe);
       player.hidden = false;
       btn.hidden = true;
-    }, { once: true });
+    };
+
+    btn.addEventListener('click', () => {
+      const id = box.dataset.vimeoId;
+      if (id) play(id, box.dataset.vimeoHash, btn.getAttribute('aria-label') ?? 'Vimeo');
+    });
+
+    // Las piezas secundarias del caso piden sonar aquí, en el marco grande.
+    box.addEventListener('vimeo:play', (e) => {
+      const { id, hash, title } = (e as CustomEvent).detail;
+      if (id) play(id, hash, title);
+    });
   });
 </script>

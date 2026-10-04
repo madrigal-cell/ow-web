@@ -1,0 +1,78 @@
+---
+/**
+ * Trabajos de la home, opción C: bandas a ancho completo.
+ * Cada caso ocupa lo mismo y se ve como una portada: imagen a sangre, título
+ * encima y entradilla. Se baja con scroll, sin jerarquía entre casos.
+ */
+import { Image } from 'astro:assets';
+import { resolveLocale, dict, useTranslations, path, casePath } from '../i18n';
+import { featuredCases, type Caso } from '../lib/casos';
+
+const locale = resolveLocale(Astro.currentLocale);
+const d = dict(locale);
+const t = useTranslations(locale);
+const { all, featured } = await featuredCases(locale);
+const types = d.types as Record<string, string>;
+const meta = (c: Caso) => [types[c.data.type], c.data.year, c.data.duration].filter(Boolean).join(' · ');
+---
+<section class="work" aria-labelledby="work-title">
+  <div class="work__head wrap">
+    <h2 id="work-title" class="display work__title">{d.work.title}</h2>
+    <a class="label link-rule" href={path('work', locale)}>
+      <span class="work__all">{t('work.seeAll', { n: all.length })}</span>
+      <span class="work__all-short">{t('work.seeAllShort', { n: all.length })}</span>
+    </a>
+  </div>
+
+  <ol class="bands" role="list">
+    {featured.map((c) => (
+      <li class:list={['band', `band--${c.data.coverTone}`]}>
+        <a class="band__link" href={casePath(c.data.slug, locale)}>
+          {c.data.cover && (
+            <Image class="band__img" src={c.data.cover} alt={c.data.coverAlt ?? ''} widths={[720, 1200, 1600, 2000]} sizes="100vw" loading="lazy" />
+          )}
+          <div class="band__text wrap">
+            <p class="label band__meta">{meta(c)}</p>
+            <h3 class="display band__title">{c.data.title}</h3>
+            <p class="band__lead">{c.data.lead}</p>
+            <span class="label band__more">{d.work.read}</span>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .work { padding-top: var(--section-y); }
+  .work__head { display: flex; justify-content: space-between; align-items: end; padding-bottom: 1rem; }
+  .work__title { font-size: var(--fs-section); line-height: 0.9; }
+  .work__all { display: none; }
+
+  .bands { display: flex; flex-direction: column; gap: var(--line); background: var(--color-ink); }
+  .band { position: relative; background: var(--color-ink); color: var(--color-bg); }
+  .band--accent { background: var(--color-accent); color: var(--color-ink); }
+  .band--paper { background: var(--color-placeholder); color: var(--color-ink); }
+  .band__link { position: relative; display: block; aspect-ratio: 3 / 4; }
+  .band :global(.band__img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 800ms var(--ease); }
+  .band__link::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.2) 55%, rgba(11, 11, 11, 0.3)); }
+  .band__link:hover :global(.band__img) { transform: scale(1.03); }
+  .band__text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: flex; flex-direction: column; gap: 0.5rem; padding-block: 1.5rem; color: var(--color-bg); }
+  .band__meta { color: var(--color-bg); opacity: 0.85; }
+  .band__title { font-size: var(--fs-card); line-height: 1; transition: color var(--dur) var(--ease); }
+  .band__link:hover .band__title { color: var(--color-accent); }
+  /* En móvil la banda es más estrecha: recortamos la entradilla a tres líneas para que
+     la portada no quede tapada por el texto. */
+  .band__lead { font-size: var(--fs-body); line-height: 1.45; max-width: 46ch; color: var(--color-text-dark); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .band__more { color: var(--color-accent); }
+
+  @media (min-width: 900px) {
+    .work__head { padding-bottom: 1.5rem; }
+    .work__all { display: inline; }
+    .work__all-short { display: none; }
+    .band__link { aspect-ratio: 21 / 9; }
+    .band__text { gap: 0.75rem; padding-block: 2.5rem; }
+    .band__title { font-size: var(--fs-h2); }
+    .band__lead { -webkit-line-clamp: none; overflow: visible; display: block; }
+  }
+</style>

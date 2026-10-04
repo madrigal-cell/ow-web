@@ -1,0 +1,99 @@
+---
+/**
+ * Otras piezas de un caso (versiones, reels, rodajes del mismo proyecto).
+ * Cada tarjeta suena en el marco del vídeo principal: nunca se abren dos reproductores.
+ * Sin JavaScript no hacen nada, por eso el vídeo principal sigue siendo el que cuenta el caso.
+ */
+import { Image } from 'astro:assets';
+import { resolveLocale, dict } from '../i18n';
+
+interface Piece {
+  vimeoId: string;
+  vimeoHash?: string;
+  title: string;
+  duration?: string;
+  poster?: ImageMetadata;
+  posterAlt?: string;
+}
+interface Props { pieces: Piece[]; tone?: 'accent' | 'ink' | 'paper' }
+const { pieces, tone = 'ink' } = Astro.props;
+const d = dict(resolveLocale(Astro.currentLocale));
+---
+<section class="pieces wrap" aria-label={d.casePage.pieces}>
+  <header class="pieces__head">
+    <h2 class="label">{d.casePage.pieces}</h2>
+    <p class="label muted">{d.casePage.piecesNote}</p>
+  </header>
+  <ul role="list" class="pieces__grid">
+    {pieces.map((p) => (
+      <li>
+        <button
+          class="piece"
+          type="button"
+          data-vimeo-id={p.vimeoId}
+          data-vimeo-hash={p.vimeoHash}
+          aria-label={`${d.showreel.play}: ${p.title}`}
+        >
+          <span class:list={['piece__cover', `piece__cover--${tone}`]}>
+            {p.poster && <Image src={p.poster} alt={p.posterAlt ?? ''} widths={[320, 480, 800]} sizes="(min-width: 900px) 25vw, 45vw" loading="lazy" />}
+            <span class="piece__btn" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7 4.5v15l12-7.5-12-7.5z" fill="currentColor"/></svg>
+            </span>
+            {p.duration && <span class="label piece__duration">{p.duration}</span>}
+          </span>
+          <span class="piece__title">{p.title}</span>
+        </button>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .pieces { padding-top: 1.5rem; }
+  .pieces__head { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; align-items: baseline; margin-bottom: 1rem; }
+  .pieces__head h2 { margin: 0; }
+  .pieces__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); padding: 0; margin: 0; }
+  .piece { display: flex; flex-direction: column; gap: 0.5rem; text-align: left; width: 100%; }
+  .piece__cover { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; }
+  .piece__cover--accent { background: var(--color-accent); color: var(--color-ink); }
+  .piece__cover--ink { background: var(--color-ink); color: var(--color-bg); }
+  .piece__cover--paper { background: var(--color-placeholder); color: var(--color-ink); }
+  .piece__cover :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
+  .piece:hover .piece__cover :global(img) { transform: scale(1.03); }
+  .piece__btn {
+    position: absolute; left: 0.75rem; bottom: 0.75rem; width: 44px; height: 44px;
+    background: var(--color-accent); color: var(--color-ink); display: grid; place-items: center;
+    transition: transform var(--dur) var(--ease);
+  }
+  .piece:hover .piece__btn { transform: scale(1.06); }
+  .piece__duration { position: absolute; right: 0.75rem; bottom: 0.75rem; color: var(--color-bg); text-shadow: 0 1px 6px rgba(11, 11, 11, 0.6); }
+  .piece__title { font-size: var(--fs-body); line-height: 1.3; transition: color var(--dur) var(--ease); }
+  .piece:hover .piece__title, .piece:focus-visible .piece__title { color: var(--color-accent); }
+  .piece[aria-pressed='true'] .piece__title { color: var(--color-accent-ink); }
+
+  @media (min-width: 900px) {
+    .pieces__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.pieces').forEach((section) => {
+    // El marco grande del caso: el vídeo principal, justo encima de estas tarjetas.
+    const box = document.querySelector<HTMLElement>('.vimeo[data-vimeo-id]');
+    if (!box) return;
+    const buttons = section.querySelectorAll<HTMLButtonElement>('.piece');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.vimeoId;
+        if (!id) return;
+        box.dispatchEvent(
+          new CustomEvent('vimeo:play', {
+            detail: { id, hash: btn.dataset.vimeoHash, title: btn.getAttribute('aria-label') ?? 'Vimeo' },
+          }),
+        );
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  });
+</script>

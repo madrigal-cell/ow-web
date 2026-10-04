@@ -25,7 +25,11 @@ const casos = defineCollection({
       duration: z.string().optional(),
       /** Fecha de publicación del vídeo (AAAA-MM-DD), para los datos estructurados. */
       date: z.string().optional(),
-      /** Vídeos adicionales del caso, que se muestran debajo del texto (el principal va en vimeoId). */
+      cover: image().optional(),
+      coverAlt: z.string().optional(),
+      /** Color del hueco mientras no hay imagen de portada. */
+      coverTone: z.enum(['accent', 'ink', 'paper']).default('ink'),
+      /** Otras piezas del proyecto: se ofrecen bajo el vídeo principal y se reproducen en su mismo marco. */
       videos: z
         .array(
           z.object({
@@ -33,14 +37,13 @@ const casos = defineCollection({
             vimeoHash: z.string().optional(),
             title: z.string(),
             duration: z.string().optional(),
+            /** Fecha de publicación (AAAA-MM-DD) para los datos estructurados; si falta, la del caso. */
             date: z.string().optional(),
+            poster: image().optional(),
+            posterAlt: z.string().optional(),
           }),
         )
         .default([]),
-      cover: image().optional(),
-      coverAlt: z.string().optional(),
-      /** Color del hueco mientras no hay imagen de portada. */
-      coverTone: z.enum(['accent', 'ink', 'paper']).default('ink'),
       gallery: z.array(image()).default([]),
       deliverables: z.array(z.string()).default([]),
       lead: z.string(),

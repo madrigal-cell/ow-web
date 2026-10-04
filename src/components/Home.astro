@@ -1,15 +1,20 @@
 ---
-/** Secciones de la Home (compartidas por / y /en/). Nav y Footer los pone el layout Page. */
+/**
+ * Secciones de la Home (compartidas por / y /en/). Nav y Footer los pone el layout Page.
+ * Orden: portada · showreel · trabajos (bandas a ancho completo) · para agencias · clientes · nosotros.
+ * Los trabajos van antes del bloque negro; la banda de clientes, después: primero la promesa,
+ * después con quién la hemos cumplido.
+ */
 import Hero from './Hero.astro';
 import Showreel from './Showreel.astro';
-import Marquee from './Marquee.astro';
-import WorkGrid from './WorkGrid.astro';
+import WorkBands from './WorkBands.astro';
 import Agencies from './Agencies.astro';
+import Marquee from './Marquee.astro';
 import AboutStrip from './AboutStrip.astro';
 ---
 <Hero />
 <Showreel />
-<Marquee />
-<WorkGrid />
+<WorkBands />
 <Agencies />
+<Marquee flush showLabel />
 <AboutStrip />

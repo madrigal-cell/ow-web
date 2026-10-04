@@ -1,11 +1,18 @@
 ---
-/** Banda de marcas. Marquee animado en escritorio; lista estática en móvil y con reduced-motion. */
+/**
+ * Banda de marcas. Marquee animado en escritorio; lista estática en móvil y con reduced-motion.
+ * `flush`: sin margen superior, para cuando va pegada a un bloque de color (la banda negra).
+ * `showLabel`: rótulo visible encima, para que se lea como "clientes" y no como adorno.
+ */
 import { resolveLocale, dict } from '../i18n';
 import clientes from '../data/clientes.json';
+interface Props { flush?: boolean; showLabel?: boolean }
+const { flush = false, showLabel = false } = Astro.props;
 const d = dict(resolveLocale(Astro.currentLocale));
 const list = clientes.filter((c) => c.marquee);
 ---
-<section class="marquee rule-top rule-bottom" aria-label={d.marquee.label}>
+<section class:list={['marquee', 'rule-bottom', { 'marquee--flush': flush, 'rule-top': !flush }]} aria-label={d.marquee.label}>
+  {showLabel && <p class="label marquee__label wrap">{d.marquee.label}</p>}
   <ul class="marquee-track display" role="list">
     {list.map((c) => <li>{c.name}</li>)}
     {list.map((c) => <li aria-hidden="true" class="marquee__dup">{c.name}</li>)}
@@ -14,6 +21,8 @@ const list = clientes.filter((c) => c.marquee);
 
 <style>
   .marquee { margin-top: 1.75rem; padding-block: 1rem; overflow: hidden; }
+  .marquee--flush { margin-top: 0; padding-top: 1.25rem; }
+  .marquee__label { color: var(--color-label); padding-bottom: 0.875rem; }
   .marquee-track { font-size: var(--fs-marquee); line-height: 1; }
   /* Móvil: sin animación, lista que envuelve */
   @media (max-width: 899px) {
@@ -22,6 +31,8 @@ const list = clientes.filter((c) => c.marquee);
   }
   @media (min-width: 900px) {
     .marquee { margin-top: 2.5rem; padding-block: 1.25rem; }
+    .marquee--flush { margin-top: 0; padding-top: 1.75rem; }
+    .marquee__label { padding-bottom: 1.25rem; }
     .marquee-track li { padding-right: 4rem; }
     .marquee-track { gap: 0; }
     .marquee:hover .marquee-track { animation-play-state: paused; }

@@ -4,7 +4,7 @@ slug: "mastercard-premios-frace"
 lang: "en"
 client: "Mastercard"
 agency: "Nanook Agency"
-type: "evento"
+type: "marca"
 year: 2025
 vimeoId: "1007717865"
 duration: "03:54"

@@ -14,7 +14,7 @@ items:
   - "Own 100 m² studio"
   - "Product and campaign photography"
 caseType: "marca"
-order: 2
+order: 1
 ---
 
 The agency brings the idea and the script; we bring the production: casting, locations, studio, camera and lighting crew, cinematography, editing, colour and motion. We work from a closed brief with sign-off at every stage, so the result is the one that was sold to the client.

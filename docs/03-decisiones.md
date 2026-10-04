@@ -29,6 +29,20 @@
 
 **Público**: agencias de eventos y de comunicación. Bodas fuera.
 
+## 14 sep 2026 — revisión de home (Martín)
+
+**Home (decidido: opción C con los trabajos delante)**
+- Trabajos deja de ser un grid de cinco tamaños distintos: **cada caso es una banda a ancho completo**, con la portada grande, todas iguales. La importancia la marca el orden (`order` en cada caso), no el tamaño.
+- Orden de la home: portada · showreel · **trabajos** · Para agencias (negro) · **clientes** · nosotros. La banda de clientes baja debajo del bloque negro, con rótulo visible.
+
+**Copys revisados**
+- Claim de portada: intacto ("Lo único en blanco es el nombre").
+- "Para agencias": nuevo titular "La idea es tuya. El marrón, nuestro." y las tres promesas reescritas desde lo que le duele a la agencia, en orden antes/durante/después: **En 24 horas** (respuesta y presupuesto cerrado) · **El día D, tranquilo** (no vas a tener que estar encima) · **A tu fecha** (entregas).
+- Se quita "Sevilla" del titular de Nosotros en la home: queda "Plató propio. Cámaras propias. Cabezonería propia." Sevilla se mantiene donde sirve para SEO (metadatos, pie, página Nosotros) y en el resto se habla de Madrid y Andalucía.
+- Fuera las frases de laboratorio: "no pueden permitirse un casi", "sin dobles tomas", "entrega rápida".
+
+**Descartadas**: A (lista tipo blog) y B (índice con miniaturas), en `/pruebas/a/` y `/pruebas/b/`. Páginas internas, no indexadas; se borran cuando ya no hagan falta.
+
 ## Pendientes
 - Lista definitiva de clientes finales con logo (propuesta: Xiaomi, JTI, Mastercard, Nissan, TCL, LG, Emasesa, Cruz Roja, IDAE, Iturri, Consum, JRC).
 - A qué agencias se pide testimonio (2-3 de las cinco autorizadas).
