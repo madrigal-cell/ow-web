@@ -25,6 +25,18 @@ const casos = defineCollection({
       duration: z.string().optional(),
       /** Fecha de publicación del vídeo (AAAA-MM-DD), para los datos estructurados. */
       date: z.string().optional(),
+      /** Vídeos adicionales del caso, que se muestran debajo del texto (el principal va en vimeoId). */
+      videos: z
+        .array(
+          z.object({
+            vimeoId: z.string(),
+            vimeoHash: z.string().optional(),
+            title: z.string(),
+            duration: z.string().optional(),
+            date: z.string().optional(),
+          }),
+        )
+        .default([]),
       cover: image().optional(),
       coverAlt: z.string().optional(),
       /** Color del hueco mientras no hay imagen de portada. */
