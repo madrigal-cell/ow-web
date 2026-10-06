@@ -9,7 +9,7 @@
     { "q": "¿Hacéis streaming?", "a": "Sí: realización multicámara en directo, emisión a YouTube, Vimeo, LinkedIn o plataforma privada, y grabación limpia para la edición posterior." },
     { "q": "¿Qué necesitáis de la agencia?", "a": "Brief, guion o escaleta si ya lo hay, fecha y dónde se rueda, un contacto de producción y la guía de marca del cliente. El resto lo resolvemos nosotros." },
     { "q": "¿Quién firma el trabajo?", "a": "Como acordemos. Habitualmente la agencia presenta el trabajo a su cliente y nosotros no aparecemos. Solo publicamos casos cuando el cliente final ya lo ha hecho y la agencia está de acuerdo." },
-    { "q": "¿Tenéis plató propio?", "a": "Sí, 100 m² en Sevilla con ciclorama, luz y sonido, para spots, entrevistas y producto." },
+    { "q": "¿Tenéis plató propio?", "a": "Sí, 100 m² en Sevilla con luz y sonido propios, para spots, entrevistas y producto." },
     { "q": "¿Cómo se entrega el material?", "a": "Enlace de revisión en Vimeo con comentarios por minuto, y entrega final por transferencia en los formatos que pida el plan de medios." }
   ],
   "en": [
@@ -22,7 +22,7 @@
     { "q": "Do you do live streaming?", "a": "Yes: multi-camera live production, streaming to YouTube, Vimeo, LinkedIn or a private platform, and a clean recording for the edit." },
     { "q": "What do you need from the agency?", "a": "Brief, script or running order if there is one, date and where we shoot, a production contact and the client's brand guidelines. We handle the rest." },
     { "q": "Who signs the work?", "a": "Whatever we agree. Usually the agency presents the work to its client and we stay out of sight. We only publish case studies once the end client has, and with the agency's agreement." },
-    { "q": "Do you have your own studio?", "a": "Yes, 100 m² in Seville with cyclorama, lighting and sound, for commercials, interviews and product." },
+    { "q": "Do you have your own studio?", "a": "Yes, 100 m² in Seville with our own lighting and sound, for commercials, interviews and product." },
     { "q": "How is the material delivered?", "a": "Vimeo review link with timecoded comments, then final delivery by transfer in the formats the media plan requires." }
   ]
 }

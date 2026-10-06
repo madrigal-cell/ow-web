@@ -7,6 +7,7 @@ import PageHead from '../PageHead.astro';
 import CtaBand from '../CtaBand.astro';
 import { resolveLocale, dict, path } from '../../i18n';
 import { people } from '../../lib/schema';
+import estudio from '../../assets/estudio.jpg';
 
 const locale = resolveLocale(Astro.currentLocale);
 const d = dict(locale);
@@ -56,7 +57,7 @@ const schema = people(team.map((p) => ({ name: p.data.name, role: p.data.role[lo
   )}
 
   <section class="section wrap grid-12 studio">
-    <div class="studio__visual" aria-hidden="true"></div>
+    <div class="studio__visual"><Image src={estudio} alt={a.studioAlt} widths={[600, 1146]} sizes="(min-width: 900px) 50vw, 100vw" loading="lazy" /></div>
     <div class="studio__text">
       <h2 class="display studio__title">{a.studioTitle}</h2>
       <p class="lead">{a.studio}</p>
@@ -84,7 +85,8 @@ const schema = people(team.map((p) => ({ name: p.data.name, role: p.data.role[lo
   .person__name--sm { font-size: var(--fs-card-sm); }
   .person__nick { color: var(--color-accent); }
   .studio { row-gap: 2rem; align-items: start; }
-  .studio__visual { grid-column: 1 / -1; aspect-ratio: 16 / 10; background: var(--color-accent); }
+  .studio__visual { grid-column: 1 / -1; aspect-ratio: 16 / 10; background: var(--color-ink); overflow: hidden; }
+  .studio__visual :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
   .studio__text { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1rem; }
   .studio__title { font-size: var(--fs-block); line-height: 0.9; }
   .studio__sub { color: var(--color-label); margin-top: 1rem; }
