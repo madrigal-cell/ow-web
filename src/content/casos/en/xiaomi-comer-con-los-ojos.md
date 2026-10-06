@@ -15,7 +15,9 @@ videos:
     title: "Event recap · Córdoba photowalk"
     duration: "00:47"
     date: "2026-06-23"
-coverTone: "paper"
+cover: "../../../assets/casos/xiaomi-comer-con-los-ojos.jpg"
+coverTone: "ink"
+coverAlt: "Opening still from the Comer con los ojos film: Xiaomi 17 Ultra presents title over the latticework of a Mudéjar doorway in Córdoba"
 deliverables:
   - "1'07\" 4K film with photographer Javier Salas and Paco Morales"
   - "Shoot photography"

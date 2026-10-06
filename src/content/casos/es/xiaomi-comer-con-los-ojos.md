@@ -15,7 +15,9 @@ videos:
     title: "Recap del evento · Photowalk Córdoba"
     duration: "00:47"
     date: "2026-06-23"
-coverTone: "paper"
+cover: "../../../assets/casos/xiaomi-comer-con-los-ojos.jpg"
+coverTone: "ink"
+coverAlt: "Fotograma de apertura del vídeo Comer con los ojos: rótulo Xiaomi 17 Ultra presenta sobre la celosía de una puerta mudéjar de Córdoba"
 deliverables:
   - "Pieza 1'07\" en 4K con el fotógrafo Javier Salas y Paco Morales"
   - "Fotografía del rodaje"
