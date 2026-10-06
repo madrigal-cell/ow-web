@@ -8,17 +8,23 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 1) Siempre https y sin www
+  # 1) Un solo dominio: siempre https y siempre owmakers.com
+  #    (www, nueva.owmakers.com y cualquier otro alias van a 301 al dominio principal).
   RewriteCond %{HTTPS} off [OR]
-  RewriteCond %{HTTP_HOST} ^www\. [NC]
-  RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
-  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+  RewriteCond %{HTTP_HOST} !^owmakers\.com$ [NC]
+  RewriteRule ^ https://owmakers.com%{REQUEST_URI} [R=301,L]
 
-  # 2) Redirecciones desde la web antigua (WordPress)
+  # 2) Redirecciones desde la web antigua (WordPress, retirada el 6 oct 2026)
   RewriteCond %{QUERY_STRING} (^|&)(p|page_id|cat|s)= [NC]
   RewriteRule ^$ /? [R=301,L]
   RewriteRule ^(inicio|home|index\.php)/?$ / [R=301,L]
   RewriteRule ^(wp-admin|wp-login\.php|wp-content|wp-includes|wp-json|xmlrpc\.php|feed|comments|author|category|tag)(/.*)?$ / [R=301,L]
+  RewriteRule ^wp-sitemap.*\.xml$ /sitemap-index.xml [R=301,L]
+  RewriteRule ^sitemap_index\.xml$ /sitemap-index.xml [R=301,L]
+  RewriteRule ^politica-de-privacidad/?$ /privacidad/ [R=301,L]
+  RewriteRule ^no-disponible/?$ / [R=301,L]
+  RewriteRule ^portfolios/frace-(2022|2023|2024)/?$ /trabajos/mastercard-premios-frace/ [R=301,L]
+  RewriteRule ^portfolios?(/.*)?$ /trabajos/ [R=301,L]
 
   # 3) Barra final en directorios reales (Astro genera /ruta/index.html)
   RewriteCond %{REQUEST_FILENAME} -d

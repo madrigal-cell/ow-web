@@ -56,9 +56,9 @@ npm run deploy
 
 - `npm run deploy:dry` enseña qué se subiría sin subir nada.
 - La configuración está en `.env` (copiar de `.env.example`): servidor, carpeta remota y dirección pública para comprobar. El acceso al servidor va por clave SSH ya instalada en el Mac; no hay contraseñas en el proyecto.
-- La web vive en el servidor en `htdocs/owmakers-web/`, separada del WordPress antiguo (`htdocs/clickandbuilds/owmakers/`). Ninguna publicación toca el WordPress ni OW PROGRESS (`htdocs/progress/`).
-- Lanzamiento: en el panel de IONOS, cambiar el destino del dominio owmakers.com a la carpeta `owmakers-web`. Vuelta atrás: apuntarlo de nuevo a `clickandbuilds/owmakers`.
-- Dirección de pruebas: subdominio `nueva.owmakers.com` apuntando a `owmakers-web` (se crea en el panel de IONOS).
+- La web vive en el servidor en `htdocs/owmakers-web/`. Ninguna publicación toca OW PROGRESS (`htdocs/progress/`).
+- Lanzada el 6 oct 2026: el dominio owmakers.com sigue apuntando en el panel de IONOS a `htdocs/clickandbuilds/owmakers`, que ahora es un enlace simbólico a `owmakers-web`. El WordPress antiguo está en `htdocs/_papelera/owmakers-wordpress-retirado-2026-10-06` (borrado definitivo y base de datos `dbs11267149` desde el panel de IONOS). Cuando convenga, apuntar el dominio directamente a `owmakers-web` en el panel y quitar el enlace.
+- `nueva.owmakers.com` sigue apuntando a `owmakers-web` y redirige con 301 a owmakers.com (regla 1 de `public/.htaccess`).
 
 ## Mantenimiento en lenguaje llano
 
