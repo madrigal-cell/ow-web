@@ -7,4 +7,5 @@ role:
 photo: "../../assets/equipo/madri.jpg"
 founder: true
 order: 1
+linkedin: "https://www.linkedin.com/in/madrimakers/"
 ---

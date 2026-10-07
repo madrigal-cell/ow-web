@@ -20,8 +20,8 @@ export const site = {
     country: 'ES',
   },
   social: {
-    linkedin: 'https://www.linkedin.com/company/on-white-makers',
-    instagram: 'https://www.instagram.com/owmakers/',
+    linkedin: 'https://es.linkedin.com/company/onwhite-makers',
+    instagram: 'https://www.instagram.com/onwhiteproductora/',
     vimeo: 'https://vimeo.com/owmakers',
   },
   /** Imágenes para datos estructurados y redes. */
