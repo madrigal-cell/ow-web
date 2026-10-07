@@ -53,7 +53,9 @@ const meta = (c: Caso) => [types[c.data.type], c.data.year, c.data.duration].fil
   .band { position: relative; background: var(--color-ink); color: var(--color-bg); }
   .band--accent { background: var(--color-accent); color: var(--color-ink); }
   .band--paper { background: var(--color-placeholder); color: var(--color-ink); }
-  .band__link { position: relative; display: block; aspect-ratio: 3 / 4; }
+  /* overflow: hidden para que el zoom de la portada al pasar el ratón no se salga de la banda
+     (asomaba por arriba y por abajo sin el degradado encima). */
+  .band__link { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; }
   .band :global(.band__img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 800ms var(--ease); }
   .band__link::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.2) 55%, rgba(11, 11, 11, 0.3)); }
   .band__link:hover :global(.band__img) { transform: scale(1.03); }
